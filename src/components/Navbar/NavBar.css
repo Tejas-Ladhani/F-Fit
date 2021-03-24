@@ -1,0 +1,25 @@
+
+.navbar {
+    padding-right: 10rem;
+    padding-left: 5rem;
+}
+
+.nav-item .nav-link {
+    /* font-family: var(--roboto); */
+    /* text-transform: uppercase; */
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 10px;
+    font-weight: 600;
+    color:azure;
+    /* color: var(--title-color); */
+    font-size: large;
+}
+
+ .navbar-nav a.active {
+    color: #335eea;
+}
+ .navbar-nav a:hover {
+    color: #335eea;
+}
+
