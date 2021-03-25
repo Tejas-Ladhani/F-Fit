@@ -4,11 +4,10 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import NBar from './components/Navbar/Navbar';
-
+import Landing from './Landing';
 ReactDOM.render(
   <React.StrictMode>
-    <NBar/>
+    <Landing />
   </React.StrictMode>,
   document.getElementById('root')
 );
