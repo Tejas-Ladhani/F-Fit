@@ -8,7 +8,7 @@ function NBar() {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#link">Balance</Nav.Link>
+          <Nav.Link href="">Balance</Nav.Link>
           <NavDropdown title="Break" id="basic-nav-dropdown">
             <NavDropdown.Item href="#action/3.1">Overall</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.2">Savings</NavDropdown.Item>
