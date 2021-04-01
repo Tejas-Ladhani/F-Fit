@@ -1,7 +1,7 @@
 
 import SBanner from '../../site-banner/SBanner';
 import FBanner from '../../Features-banner/FBanner';
-import ABanner from '../../About-banner/ABanner';
+import ABanner from '../../comp/About-banner/ABanner';
 import StsBanner from '../../States-Banner/StsBanner';
 
 function Landing() {
