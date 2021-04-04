@@ -1,16 +1,20 @@
 
-import SBanner from '../../site-banner/SBanner';
-import FBanner from '../../Features-banner/FBanner';
+import SBanner from '../../comp/site-banner/SBanner';
+import FBanner from '../../comp/Features-banner/FBanner';
 import ABanner from '../../comp/About-banner/ABanner';
-import StsBanner from '../../States-Banner/StsBanner';
+import StsBanner from '../../comp/States-Banner/StsBanner';
 
 function Landing() {
   return (
     <div>
-      <SBanner />
-      <FBanner />
-      <ABanner />
+      <SBanner/>
+      <FBanner/>
+      <ABanner/>
       <StsBanner />
+      {/* 
+    
+      
+       */}
     </div>
   );
 }
