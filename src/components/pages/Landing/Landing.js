@@ -1,4 +1,3 @@
-
 import SBanner from '../../comp/site-banner/SBanner';
 import FBanner from '../../comp/Features-banner/FBanner';
 import ABanner from '../../comp/About-banner/ABanner';

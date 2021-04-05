@@ -1,4 +1,6 @@
 import { Navbar, NavDropdown, Nav, Button } from 'react-bootstrap';
+import {NavLink,Link} from 'react-router-dom';
+import * as Routes from '../../routes/Routes';
 
 function NBar() {
   return (
@@ -7,8 +9,8 @@ function NBar() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="">Balance</Nav.Link>
+          <Nav.Link href={Routes.Home.link}>Home</Nav.Link>
+          <Nav.Link href={Routes.Balance.link}>Balance</Nav.Link>
           <NavDropdown title="Break" id="basic-nav-dropdown">
             <NavDropdown.Item href="#action/3.1">Overall</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.2">Savings</NavDropdown.Item>
@@ -18,7 +20,7 @@ function NBar() {
             <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
           </NavDropdown>
 
-          <Nav.Link href="#News">News</Nav.Link>
+          <Nav.Link href= {Routes.News.link}>News</Nav.Link>
 
           <Nav.Link href="#market">Market</Nav.Link>
 
