@@ -13,6 +13,9 @@ export default function Switcher() {
         <Route path="/landing">
             <Landing />
         </Route>
+        <Route>
+            
+        </Route>
         <Route path="/expenses">
             <Expenses />
         </Route>
