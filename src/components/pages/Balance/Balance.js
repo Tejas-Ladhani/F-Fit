@@ -7,10 +7,13 @@ function Balance(){
         <div className="row">
           <div className="col-12 col-md-6 ">
             <BDropDown/>
+
           </div>
           <div className="col-12 col-md-6 mt-2">
           <Image src="img/assets/Balance.png" fluid />
           </div>
+          
+
         </div>
        </div>
 

@@ -16,6 +16,7 @@ ReactDOM.render(
     </Router>
     <Footer />
 </React.StrictMode>,
+
   document.getElementById('root')
 );
 
