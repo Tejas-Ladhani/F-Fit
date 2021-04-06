@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Expenses() {
+export default function Emergency() {
     return (
         <div>
-            <h1>Expenses</h1>
+            <h1>Emergency</h1>
         </div>
     )
 }
