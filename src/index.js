@@ -7,14 +7,16 @@ import Footer from './components/comp/Footer/Footer'
 import NBar from './components/comp/Navbar/Navbar';
 import Switcher from './components/Switcher/Switcher';
 import {BrowserRouter as Router} from 'react-router-dom';
+import Signup from './components/comp/Sing-Up/Signup';
 
 ReactDOM.render(
   <React.StrictMode>
-   <NBar />
-    <Router>
+   {/* <NBar /> */}
+    {/* <Router>
      <Switcher />
-    </Router>
-    <Footer />
+    </Router> */}
+    <Signup/>
+    {/* <Footer /> */}
 </React.StrictMode>,
 
   document.getElementById('root')
