@@ -6,20 +6,20 @@ import reportWebVitals from './reportWebVitals';
 import Footer from './components/comp/Footer/Footer'
 import NBar from './components/comp/Navbar/Navbar';
 import Switcher from './components/Switcher/Switcher';
-import {BrowserRouter as Router} from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Signup from './components/comp/Sing-Up/Signup';
 import Eindex from './components/comp/Expense-tracker';
 
 ReactDOM.render(
   <React.StrictMode>
-   {/* <NBar /> 
+    {/* <NBar /> 
     <Router>
      <Switcher />
     </Router>
     <Signup/>
      <Footer /> */}
-     <Eindex/>
-</React.StrictMode>,
+    <Eindex />
+  </React.StrictMode>,
 
   document.getElementById('root')
 );
