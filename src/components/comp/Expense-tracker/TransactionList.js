@@ -1,6 +1,6 @@
 import React,{useContext} from 'react'
 import { ExpenseContext} from '../../contexts/ExpenseContext'
-
+import Transaction from './Transaction'
 function TransactionList() {
     const {transactions}=useContext(ExpenseContext);
     //console.log(context)
@@ -8,9 +8,7 @@ function TransactionList() {
         <>
            <h3>History</h3>
       <ul id="list" className="list">
-          {transactions.map(t=>(<li className="minus">
-          {t.text} <span>-$400</span><button className="delete-btn">x</button>
-        </li> ))}
+          {transactions.map(t=>(<Transaction key={t.id} transaction={t}/> ))}
          
       </ul> 
         </>
