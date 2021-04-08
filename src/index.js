@@ -11,12 +11,12 @@ import Signup from './components/comp/Sing-Up/Signup';
 
 ReactDOM.render(
   <React.StrictMode>
-   {/* <NBar /> */}
-    {/* <Router>
+   <NBar /> 
+    <Router>
      <Switcher />
-    </Router> */}
+    </Router>
     <Signup/>
-    {/* <Footer /> */}
+     <Footer />
 </React.StrictMode>,
 
   document.getElementById('root')
