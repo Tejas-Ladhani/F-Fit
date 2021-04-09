@@ -1,0 +1,13 @@
+/* .NewsCards{
+    margin-top: 2%;
+    margin-left: 20%;
+}
+.News{
+    padding: 5%;
+    border-radius: 5%;
+} */
+
+.news-card{
+    box-shadow: 5px 5px 5px rgb(177, 177, 177);
+    border-radius: 10px;
+}
