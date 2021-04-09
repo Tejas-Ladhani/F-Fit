@@ -5,5 +5,5 @@ export default function Savings() {
         <div>
             <h1>Savings</h1>
         </div>
-    )
+    );
 }
