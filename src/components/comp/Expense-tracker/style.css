@@ -9,12 +9,6 @@
 }
 
 
-
-.container {
-  margin: 30px auto;
-  width: 350px;
-}
-
 h1 {
   letter-spacing: 1px;
   margin: 0;
@@ -30,15 +24,6 @@ h4 {
   margin: 0;
   text-transform: uppercase;
 }
-
-
-
-.money {
-  /* font-size: 20px;
-  letter-spacing: 1px;
-  margin: 5px 0; */
-}
-
 
 .money.expense {
   color: #c0392b;

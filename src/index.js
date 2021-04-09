@@ -12,13 +12,13 @@ import Eindex from './components/comp/Expense-tracker';
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <NBar /> 
+    <NBar /> 
     <Router>
      <Switcher />
     </Router>
-    <Signup/>
-     <Footer /> */}
-    <Eindex />
+    {/* <Signup/> */}
+     <Footer />
+    {/* <Eindex /> */}
   </React.StrictMode>,
 
   document.getElementById('root')

@@ -5,15 +5,12 @@ import StsBanner from '../../comp/States-Banner/StsBanner';
 
 function Landing() {
   return (
-    <div>
+    <div >
       <SBanner/>
       <FBanner/>
       <ABanner/>
       <StsBanner />
-      {/* 
     
-      
-       */}
     </div>
   );
 }

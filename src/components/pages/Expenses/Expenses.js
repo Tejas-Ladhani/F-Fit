@@ -1,9 +1,10 @@
 import React from 'react'
+import Eindex from '../../comp/Expense-tracker'
 
 export default function Expenses() {
     return (
         <div>
-            <h1>Expenses</h1>
+            <Eindex/>
         </div>
     )
 }

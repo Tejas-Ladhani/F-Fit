@@ -8,13 +8,15 @@ import Savings from '../../components/pages/Savings/Savings';
 import Market from '../../components/pages/Market/Market';
 import Help from '../../components/pages/Help/Help';
 import Emergency from '../../components/pages/Emergency/Emergency';
+import Home from '../../components/pages/Home/Home'
 
 export default function Switcher() {
     return (
         <Router>
     <Switch>
+        <Route path='/' exact component={Landing}/>
         <Route path="/balance" exact component = {Balance}/>
-        <Route path="/landing" exact component ={Landing}/>
+        <Route path="/home" exact component ={Home}/>
         <Route path="/expense" exact component={Expenses}/>
         <Route path="/news" exact component = {News}/>
         <Route path="/savings" exact component = {Savings}/>
