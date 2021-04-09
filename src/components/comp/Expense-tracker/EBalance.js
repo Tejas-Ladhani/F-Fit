@@ -4,7 +4,6 @@ import { ExpenseContext } from '../../contexts/ExpenseContext'
 function EBalance() {
     const { transactions } = useContext(ExpenseContext);
     const amounts = transactions.map(transaction => transaction.amount);
-
     const total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2);
 
     return (
@@ -16,3 +15,5 @@ function EBalance() {
 }
 
 export default EBalance
+
+// not required for now. [not removing it]

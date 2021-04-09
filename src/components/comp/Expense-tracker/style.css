@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
 :root {
   --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -7,18 +8,9 @@
   box-sizing: border-box;
 }
 
-body {
-  background-color: #f7f7f7;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  margin: 0;
-  font-family: 'Lato', sans-serif;
-}
 
-.cntainer {
+
+.container {
   margin: 30px auto;
   width: 350px;
 }
@@ -39,35 +31,16 @@ h4 {
   text-transform: uppercase;
 }
 
-.inc-exp-container {
-  background-color: #fff;
-  box-shadow: var(--box-shadow);
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  margin: 20px 0;
-}
 
-.inc-exp-container > div {
-  flex: 1;
-  text-align: center;
-}
-
-.inc-exp-container > div:first-of-type {
-  border-right: 1px solid #dedede;
-}
 
 .money {
-  font-size: 20px;
+  /* font-size: 20px;
   letter-spacing: 1px;
-  margin: 5px 0;
+  margin: 5px 0; */
 }
 
-.money.plus {
-  color: #2ecc71;
-}
 
-.money.minus {
+.money.expense {
   color: #c0392b;
 }
 
@@ -88,7 +61,7 @@ input[type='number'] {
 
 .butn {
   cursor: pointer;
-  background-color: #9c88ff;
+  background-color:  #335eea;
   box-shadow: var(--box-shadow);
   color: #fff;
   border: 0;
@@ -106,7 +79,7 @@ input[type='number'] {
 
 .list {
   list-style-type: none;
-  padding: 0;
+  
   margin-bottom: 40px;
 }
 
@@ -119,15 +92,27 @@ input[type='number'] {
   position: relative;
   padding: 10px;
   margin: 10px 0;
+ 
 }
 
 .list li.plus {
   border-right: 5px solid #2ecc71;
 }
 
-.list li.minus {
-  border-right: 5px solid #c0392b;
+.list li.else {
+  border-right: 5px solid #f72b14;
 }
+.list li.lessthan100{
+  border-right: 5px solid #fa8787;
+}
+.list li.lessthan1000{
+  border-right: 5px solid #fd5f5f;
+}
+.list li.lessthan10000{
+  border-right: 5px solid #ff4141;
+}
+
+
 
 .delete-btn {
   cursor: pointer;

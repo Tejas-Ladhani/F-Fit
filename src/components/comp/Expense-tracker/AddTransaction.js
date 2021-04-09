@@ -2,7 +2,7 @@ import { React, useState, useContext } from 'react'
 import { ExpenseContext } from '../../contexts/ExpenseContext'
 
 function AddTransaction() {
-    const [text, setText] = useState('');
+    const [text, setText] = useState('nothing');
     const [amount, setAmount] = useState('');
     const onSubmit = e => {
         e.preventDefault(); //prevents refreshing on click
@@ -15,20 +15,24 @@ function AddTransaction() {
 
         addTransaction(newTransaction);
     }
+
     const { addTransaction } = useContext(ExpenseContext);
+
     return (
         <div>
             <h3>Add new transaction</h3>
             <form onSubmit={onSubmit} >
-                <div className="form-control">
-                    <label htmlFor="text">Text</label>
-                    <input type="text" value={text} onChange={(e) => setText(e.target.value)} placeholder="Enter text..." />
+                <div className="form-group">
+                    <div >
+                        <label htmlFor="text">Text</label>
+                        <input type="text" className="form-control" value={text} onChange={(e) => setText(e.target.value)} placeholder="Enter text..." />
+                    </div>
+                    <div >
+                        <label htmlFor="amount">Amount </label>
+                        <input type="number" className="form-control" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Enter amount..." />
+                    </div>
+                    <button className="butn">Add transaction</button>
                 </div>
-                <div className="form-control">
-                    <label htmlFor="amount">Amount <br /> (negative - expense, positive - income)</label>
-                    <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Enter amount..." />
-                </div>
-                <button className="butn">Add transaction</button>
             </form>
         </div>
     )

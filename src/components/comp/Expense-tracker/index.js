@@ -9,14 +9,19 @@ import './style.css'
 function Eindex() {
     return (
         <ExpenseProvider>
-            <div>
+            <div className="container-fluid">
                 <Eheader />
-                <div className="cntainer">
-                    <EBalance />
-                    <Expense />
-                    <TransactionList />
-                    <AddTransaction />
+                <div className="row">
+                    <div className="col-12 col-md-7">
+                        <AddTransaction />
+                        <TransactionList />
+                    </div>
+
+                    <div className="col-12 col-md-5">
+                        <Expense />
+                    </div>
                 </div>
+
             </div>
         </ExpenseProvider>
     )
