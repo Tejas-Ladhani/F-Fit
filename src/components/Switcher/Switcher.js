@@ -1,5 +1,5 @@
 import React from 'react'
-import {BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
+import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 import Balance from '../../components/pages/Balance/Balance';
 import Landing from '../../components/pages/Landing/Landing';
 import Expenses from '../../components/pages/Expenses/Expenses';
@@ -8,6 +8,8 @@ import Savings from '../../components/pages/Savings/Savings';
 import Market from '../../components/pages/Market/Market';
 import Help from '../../components/pages/Help/Help';
 import Emergency from '../../components/pages/Emergency/Emergency';
+import NewsContext from '../comp/NewsContext/NewsContext';
+
 
 export default function Switcher() {
     return (
@@ -16,7 +18,10 @@ export default function Switcher() {
         <Route path="/balance" exact component = {Balance}/>
         <Route path="/landing" exact component ={Landing}/>
         <Route path="/expense" exact component={Expenses}/>
-        <Route path="/news" exact component = {News}/>
+        <Route path="/news">
+          <News />
+          <NewsContext />
+        </Route>
         <Route path="/savings" exact component = {Savings}/>
         <Route path="/emergency" exact component = {Emergency}/>
         <Route path="/market" exact component = {Market}/>

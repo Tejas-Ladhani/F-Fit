@@ -12,7 +12,7 @@ ReactDOM.render(
   <React.StrictMode>
    <NBar />
     <Router>
-     <Switcher />
+      <Switcher />
     </Router>
     <Footer />
 </React.StrictMode>,
