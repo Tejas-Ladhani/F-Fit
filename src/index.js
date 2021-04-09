@@ -9,16 +9,19 @@ import Switcher from './components/Switcher/Switcher';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Signup from './components/comp/Sing-Up/Signup';
 import Eindex from './components/comp/Expense-tracker';
+import Sample from './components/comp/Dash-Board/Sample';
+import Dindex from './components/comp/Dash-Board/Dindex';
 
 ReactDOM.render(
   <React.StrictMode>
-    <NBar /> 
+    <NBar />
     <Router>
-     <Switcher />
+      <Switcher />
     </Router>
-    {/* <Signup/> */}
-     <Footer />
-    {/* <Eindex /> */}
+
+    <Footer />
+
+
   </React.StrictMode>,
 
   document.getElementById('root')
