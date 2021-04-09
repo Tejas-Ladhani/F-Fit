@@ -1,7 +1,7 @@
 import React,{createContext, useContext, useEffect,useState} from 'react'
 import NewsContext from '../../comp/NewsContext/NewsContext';
 export default function News() {
-    
+    const apiKey = '399670270042486fa7ad704b8edacfc9';
     const [news,setnews]= useState(null);
     useEffect(()=>{
         async function fetchData(){
