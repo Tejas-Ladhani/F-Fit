@@ -5,17 +5,17 @@ function SBanner() {
       <section className="pt-4 pt-md-11">
         <div className="container">
           <div className="row align-items-center">
-            <div className="col-12 col-md-5 col-lg-6 order-md-2">
+            <div className="col-12 col-md-4 col-lg-5 order-md-2">
 
 
               <img src="img/banner/illustration-2.png" className="img-fluid mw-md-150 mw-lg-130 mb-6 mb-md-0" alt="..." />
 
             </div>
-            <div className="col-12 col-md-7 col-lg-6 order-md-1" data-aos="fade-up">
+            <div className="col-12 col-md-8 col-lg-7 order-md-1 mb-5" data-aos="fade-up">
 
               <h1 className="display-3 text-center text-md-left">
                 Welcome to <span className="text-primary">F-Fit</span>, <br />
-                  Invest anywhere.
+                  Break-Invest-Grow.
                 </h1>
 
               <p className="lead text-center text-md-left text-muted mb-6 mb-lg-8">
