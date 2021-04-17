@@ -13,7 +13,7 @@ function NBar() {
           <Nav.Link href={Routes.Home.link}>Home</Nav.Link>
           <Nav.Link href ={Routes.Balance.link}>Balance</Nav.Link>
           <NavDropdown title="Break" id="basic-nav-dropdown">
-            <NavDropdown.Item href="">Overall</NavDropdown.Item>
+            {/* <NavDropdown.Item href="">Overall</NavDropdown.Item> */}
             <NavDropdown.Item href={Routes.Savings.link}>Savings</NavDropdown.Item>
             <NavDropdown.Item href={Routes.Expense.link}>Expenditure</NavDropdown.Item>
             <NavDropdown.Item href={Routes.Emergency.link}>Emergency-Funds</NavDropdown.Item>

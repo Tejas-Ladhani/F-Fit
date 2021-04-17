@@ -1,10 +1,11 @@
 import React from 'react'
+import Main from '../../comp/DashBoard/Main'
 
 const Home = () => {
     return (
-        <div>
-            <h1>DashBoard here</h1>
-        </div>
+        
+       <Main/>
+    
     )
 }
 

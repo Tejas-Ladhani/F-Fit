@@ -19,7 +19,7 @@ function AddTransaction() {
     const { addTransaction } = useContext(ExpenseContext);
 
     return (
-        <div>
+        <div className="addt">
             <h3>Add new transaction</h3>
             <form onSubmit={onSubmit} >
                 <div className="form-group">

@@ -9,32 +9,32 @@
 }
 
 
-h1 {
+.Expense h1 {
   letter-spacing: 1px;
   margin: 0;
 }
 
-h3 {
+.Expense h3 {
   border-bottom: 1px solid #bbb;
   padding-bottom: 10px;
   margin: 40px 0 10px;
 }
 
-h4 {
+.Expense h4 {
   margin: 0;
   text-transform: uppercase;
 }
 
-.money.expense {
+.Expense .money.expense {
   color: #c0392b;
 }
 
-label {
+.Expense label {
   display: inline-block;
   margin: 10px 0;
 }
 
-input[type='text'],
+.Expense input[type='text'],
 input[type='number'] {
   border: 1px solid #dedede;
   border-radius: 2px;
@@ -44,7 +44,7 @@ input[type='number'] {
   width: 100%;
 }
 
-.butn {
+.Expense .butn {
   cursor: pointer;
   background-color:  #335eea;
   box-shadow: var(--box-shadow);
@@ -57,7 +57,7 @@ input[type='number'] {
   width: 100%;
 }
 
-.btn:focus,
+.Expense .btn:focus,
 .delete-btn:focus {
   outline: 0;
 }
@@ -117,4 +117,16 @@ input[type='number'] {
 
 .list li:hover .delete-btn {
   opacity: 1;
+}
+
+.addt{
+  
+  top: 50px;
+  position: -webkit-sticky;
+  position: sticky;
+
+}
+
+.left_column_expense{
+  background-color: rgba(0, 89, 255, 0.062);
 }
