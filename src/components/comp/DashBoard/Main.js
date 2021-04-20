@@ -6,7 +6,7 @@ import "./Main.css";
 
 import BarChart from "../charts/BarChart";
 import PiChart from "../charts/PiChart";
-import PolarChart from "../charts/PolarChart";
+import LineChart from "../charts/LineChart";
 
 function Main() {
   var OverAll = [{ title: 'Balance', amount: '$5000', cardname: 'card1' },
@@ -95,7 +95,9 @@ function Main() {
             <PiChart />
           </div>
           <div className="charts_bottom">
-            <PolarChart />
+            {/* <PolarChart />
+             */}
+             <LineChart/>
           </div>
 
         </div>

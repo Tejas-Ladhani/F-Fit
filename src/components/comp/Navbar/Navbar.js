@@ -1,8 +1,12 @@
+import { useContext } from 'react';
 import { Navbar, NavDropdown, Nav, Button } from 'react-bootstrap';
 import {BrowserRouter as Router,NavLink,Link} from 'react-router-dom';
+import { UserContext } from '../../contexts/user';
 import * as Routes from '../../routes/Routes';
+import SignInBtn from '../signin-btn/SignInBtn';
 
 function NBar() {
+  const [user, setUser] = useContext(UserContext);
   return (
     <Router>
     <Navbar bg="light" expand="lg">
@@ -25,7 +29,7 @@ function NBar() {
 
           <Nav.Link href={Routes.Help.link}>Help</Nav.Link>
         </Nav>
-        <Button>Invest Now</Button>
+        {user?<img style={{height:'35px',borderRadius:'17px'}} src={user.photoURL}/>:<SignInBtn/>}
       </Navbar.Collapse>
     </Navbar>
     </Router>
