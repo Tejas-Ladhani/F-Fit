@@ -1,27 +1,25 @@
 
 .navbar {
-    padding-right: 10rem;
+    padding-right: 1rem;
     padding-left: 5rem;
 }
+.navbar-brand{
+    font-size: larger;
 
-.nav-item .nav-link {
-    /* font-family: var(--roboto); */
-    /* text-transform: uppercase; */
-    padding-left: 25px;
-    padding-right: 25px;
-    padding-top: 10px;
-    font-weight: 600;
-    color:azure;
+}
+a{
+    /* color: #007bff; */
+    padding: 28px;
+    font-weight: 200;
+    color:black;
     /* color: var(--title-color); */
     font-size: large;
+    text-decoration: none !important;
+    background-color: transparent;
+    padding: 5px;
+
 }
 
- .navbar-nav a.active {
-    color: #335eea;
-}
- .navbar-nav a:hover {
-    color: #335eea;
-}
 
 .Navbar_img{
     height: 20px;

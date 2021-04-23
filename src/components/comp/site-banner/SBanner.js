@@ -1,3 +1,4 @@
+import SignInBtn from '../signin-btn/SignInBtn';
 import './SBanner.css';
 function SBanner() {
   return (
@@ -22,12 +23,7 @@ function SBanner() {
                 The individual investor should act consistently as an investor and not as a speculator.
                 </p>
               <div className="text-center text-md-left">
-                <a href="#" className="btn btn-primary shadow mr-1">
-                  Sign Up
-                  </a>
-                <a href="#" className="btn btn-primary ">
-                  Login
-                  </a>
+                <SignInBtn/>
               </div>
 
             </div>

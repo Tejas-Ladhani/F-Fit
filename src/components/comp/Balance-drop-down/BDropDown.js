@@ -1,65 +1,50 @@
 import "./BDropDown.css";
-import React, { useState} from "react";
-import Dropdown from "react-bootstrap/Dropdown";
-import DropdownButton from "react-bootstrap/DropdownButton";
+import React, { useState, useContext } from "react";
 import { Form, InputGroup, Button } from "react-bootstrap";
-import FormControl from "react-bootstrap/FormControl";
- 
-function BDropDown(){
- 
-  const [balance,setbalance] = useState(0);
-  const [ratio,setratio] = useState(['first option','second option']);
-  const onSubmit= (e)=>{
+import { db } from '../../../Firebase'
+import { UserContext } from '../../contexts/user'
+
+function BDropDown() {
+
+  const [user, setUser] = useContext(UserContext);
+  const [balance, setbalance] = useState(0);
+  const [ratio, setratio] = useState('50:30:20');
+  const onSubmit = (e) => {
     e.preventDefault();
-    const OverallBalance = {
-      balance
- 
-    };
-    console.log(OverallBalance);
+    db.collection('user').doc(user.uid).set({
+      balance: balance,
+      ratio_choosed: ratio,
+    }).then(() => alert("your data saved !")
+    )
+
   }
- 
-    return (
-      <div className="dd">
-        <Form onSubmit={onSubmit}>
-          <Form.Label>Enter Amount</Form.Label>
-          <InputGroup>
-            <InputGroup.Prepend>
-              <InputGroup.Text>$</InputGroup.Text>
-            </InputGroup.Prepend>
- 
-            <FormControl
-              required
-              value={balance}
-              onChange={(e)=>{setbalance(e.target.value)}}
-            />
-            <InputGroup.Append>
-              <InputGroup.Text>.00</InputGroup.Text>
-            </InputGroup.Append>
-          </InputGroup>
- 
-          <Form.Group
-            controlId="formRatio"
-            className="ddb"
-            id="dropdown-item-button lg "
-            size="lg"
-          >
-            <Form.Label>Select a Ratio </Form.Label>
-            <Form.Control as="select" defaultValue="Select a Ratio" value ={ratio} onChange={e=> {setratio(e.target.value)}}>
-            console.log(ratio)
-              {/* {ratio.map((ratio)=>{
-                return(
-                  <option key={ratio} value={ratio}>{ratio}</option>);
-                  })  //bug
-              } */}
-            </Form.Control>
-          </Form.Group>
-          <div>
-          <input type="submit" value="Next" className="btn btn-primary" />
-        </div>
-        </Form>
-        </div>
-      
-    );
+
+  return (
+    <div className="dd">
+      <Form onSubmit={onSubmit}>
+        <Form.Group controlId="formBasicEmail">
+          <Form.Label>Balance</Form.Label>
+          <Form.Control type="number" placeholder="Enter balance" onChange={(e) => { setbalance(e.target.value); console.log(e.target.value) }} />
+          <Form.Text className="text-muted">
+            We'll never share your details with anyone else.
+    </Form.Text>
+        </Form.Group>
+
+        <Form.Group>
+          <Form.Control as="select" size="md" onChange={(e) => { setratio(e.target.value) }}>
+            <option>50:20:30</option>
+            <option>10:20:30</option>
+          </Form.Control>
+          <br />
+        </Form.Group>
+
+        <Button variant="primary" type="submit">
+          Submit
+  </Button>
+      </Form>
+    </div>
+
+  );
 }
- 
+
 export default BDropDown;

@@ -1,37 +1,65 @@
 import { useContext } from 'react';
 import { Navbar, NavDropdown, Nav, Button } from 'react-bootstrap';
-import {BrowserRouter as Router,NavLink,Link} from 'react-router-dom';
+import './NavBar.css';
 import { UserContext } from '../../contexts/user';
 import * as Routes from '../../routes/Routes';
 import SignInBtn from '../signin-btn/SignInBtn';
+import { BrowserRouter as Router, NavLink, Link, Switch, Route } from 'react-router-dom';
+import Balance from '../../pages/Balance/Balance';
+import Home from '../../pages/Home/Home';
+import Expenses from '../../pages/Expenses/Expenses';
+import Landing from '../../pages/Landing/Landing';
+import News from '../../pages/News/News';
+import NewsContext from '../NewsContext/NewsContext';
+import Savings from '../../pages/Savings/Savings';
+import Emergency from '../../pages/Emergency/Emergency';
+import Help from '../../pages/Help/Help';
+
 
 function NBar() {
   const [user, setUser] = useContext(UserContext);
   return (
     <Router>
-    <Navbar bg="light" expand="lg">
-      <Navbar.Brand href="/">F.Fit</Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
-          <Nav.Link href={Routes.Home.link}>Home</Nav.Link>
-          <Nav.Link href ={Routes.Balance.link}>Balance</Nav.Link>
-          <NavDropdown title="Break" id="basic-nav-dropdown">
-            {/* <NavDropdown.Item href="">Overall</NavDropdown.Item> */}
-            <NavDropdown.Item href={Routes.Savings.link}>Savings</NavDropdown.Item>
-            <NavDropdown.Item href={Routes.Expense.link}>Expenditure</NavDropdown.Item>
-            <NavDropdown.Item href={Routes.Emergency.link}>Emergency-Funds</NavDropdown.Item>
-          </NavDropdown>
+      <Navbar bg="light" expand="lg">
+        <Navbar.Brand href="/">F.Fit</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto">
+            <Link to={Routes.Home.link}>Home</Link>
+            <Link to={Routes.Balance.link}>Balance</Link>
+            <NavDropdown title="Break" id="basic-nav-dropdown">
 
-          <Nav.Link href= {Routes.News.link}>News</Nav.Link>
+              <NavDropdown.Item><Link to={Routes.Savings.link}>Savings</Link></NavDropdown.Item>
+              <NavDropdown.Item ><Link to={Routes.Expense.link}>Expense</Link></NavDropdown.Item>
+              <NavDropdown.Item><Link to={Routes.Emergency.link}>Emergency</Link></NavDropdown.Item>
+            </NavDropdown>
 
-          <Nav.Link href={Routes.Market.link}>Market</Nav.Link>
+            <Link to={Routes.News.link}>News</Link>
 
-          <Nav.Link href={Routes.Help.link}>Help</Nav.Link>
-        </Nav>
-        {user?<img style={{height:'35px',borderRadius:'17px'}} src={user.photoURL}/>:<SignInBtn/>}
-      </Navbar.Collapse>
-    </Navbar>
+            {/* <Link to={Routes.Market.link}>Market</Link> */}
+
+            <Link href={Routes.Help.link}>Help</Link>
+          </Nav>
+          {user ? <img style={{ height: '35px', borderRadius: '17px' }} src={user.photoURL} /> : <SignInBtn />}
+        </Navbar.Collapse>
+      </Navbar>
+      <Switch>
+        <Route path='/' exact component={Landing} />
+        <Route path="/balance" exact component={Balance} />
+        <Route path="/home" exact component={Home} />
+        <Route path="/expense" exact component={Expenses} />
+        <Route path="/news">
+          <News />
+          <NewsContext />
+        </Route>
+        <Route path="/savings" exact component={Savings} />
+        <Route path="/emergency" exact component={Emergency} />
+        <Route path="/market">
+
+        </Route>
+        <Route path="/help" exact component={Help} />
+        <Route path="/signup" />
+      </Switch>
     </Router>
   );
 }
