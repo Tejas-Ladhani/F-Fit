@@ -2,12 +2,7 @@ import firebase from "firebase"
 import "firebase/auth"
 
 const firebaseConfig = {
-  apiKey: "",
-  authDomain: "",
-  projectId: "",
-  storageBucket:"" ,
-  messagingSenderId:"" ,
-  appId: ""
+  // ....
   };
 
 const firebaseApp = firebase.initializeApp(firebaseConfig)
