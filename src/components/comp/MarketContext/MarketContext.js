@@ -1,0 +1,94 @@
+import React, { useState, useEffect, createContext } from "react";
+import { Card } from "react-bootstrap";
+import "../../comp/MarketContext/MarketContext.css";
+import Market from "../../pages/Market/Market";
+
+function MarketContext() {
+  const [cnt, setcnt] = useState(0);
+  const [stockfunc, setstockfunc] = useState("TIME_SERIES_DAILY");
+  const [apiterm, setapiterm] = useState("Time Series (Daily)");
+  const [toggle, settoggle] = useState(false);
+  const [temp, settemp] = useState("");
+  const [search, setsearch] = useState(""); //search term from the search box
+
+  const apiKey = "K19780Y8NDDIIFMX"; // api key
+  const [stocks, setstocks] = useState(null); // stock data
+
+  async function fetchData() {
+    const response = await fetch(
+      `https://www.alphavantage.co/query?function=${stockfunc}&symbol=${search}&outputsize=compact&apikey=K19780Y8NDDIIFMX`
+    ); // response from api
+    const data = await response.json(); //converting it to json format
+    console.log(data);
+    setstocks(data); //setting the stock data after succesfull response
+    setcnt(cnt + 1);
+  }
+
+  useEffect(() => {
+    fetchData(); //fetching data when search is being made
+  }, [search, stockfunc]); //making an api call when search is being made
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const searchrecieved = {
+      search,
+    };
+    console.log(searchrecieved);
+  };
+
+  return (
+    <div className="main">
+      <div className="searchbox">
+        <form onSubmit={onSubmit}>
+          <div className="float-textbox">
+            <input
+              type="text"
+              placeholder="Search Stocks..."
+              value={temp} //setting value to a temp value
+              onChange={(e) => {
+                settoggle(false);
+                settemp(e.target.value);
+              }}
+            />
+          </div>
+          <div className = "float-buttonsearch" >
+          <input
+            type="submit"
+            value="Search"
+            className="btn btn-primary"
+            onClick={() => {
+              setsearch(temp); //setting the search term after the button is clicked
+              settoggle(true);
+            }}
+          />
+          </div>
+          <div className="types">
+            <input
+              type="submit"
+              value="Monthly"
+              className="btn btn-primary"
+              onClick={() => {
+                setstockfunc("TIME_SERIES_MONTHLY");
+                setapiterm("Monthly Time Series");
+              }}
+            />
+            <input
+              type="submit"
+              value="DAILY"
+              className="btn btn-primary"
+              onClick={() => {
+                setstockfunc("TIME_SERIES_DAILY");
+                setapiterm("Time Series (Daily)");
+              }}
+            />
+          </div>
+        </form>
+      </div>
+      <div className="Stocks">
+        <Market stocks={stocks} toggle={toggle} cnt={cnt} apiterm={apiterm} />
+      </div>
+    </div>
+  );
+}
+
+export default MarketContext;

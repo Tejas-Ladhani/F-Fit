@@ -15,6 +15,7 @@ import NewsContext from '../NewsContext/NewsContext';
 import Savings from '../../pages/Savings/Savings';
 import Emergency from '../../pages/Emergency/Emergency';
 import Help from '../../pages/Help/Help';
+import MarketContext from '../MarketContext/MarketContext'
 import PrivateRoute from  '../../routes/PrivateRoute';
 
 function NBar() {
@@ -37,7 +38,7 @@ function NBar() {
 
             <Link to={Routes.News.link}>News</Link>
 
-            {/* <Link to={Routes.Market.link}>Market</Link> */}
+            <Link to={Routes.Market.link}>Market</Link>
 
             <Link href={Routes.Help.link}>Help</Link>
           </Nav>
@@ -50,15 +51,14 @@ function NBar() {
         <PrivateRoute path="/balance" exact component={Balance} />
         <PrivateRoute path="/home" exact component={Home} />
         <PrivateRoute path="/expense" exact component={Expenses} />
-        <PrivateRoute path="/news" exact component ={NewsContext}/>
-          {/* <News /> */}
+        <PrivateRoute path="/news" >
+          <News />
           {/* < /> */}
-        {/* </PrivateRoute> */}
+        </PrivateRoute>
         <PrivateRoute path="/savings" exact component={Savings} />
         <PrivateRoute path="/emergency" exact component={Emergency} />
-        <PrivateRoute path="/market">
+        <PrivateRoute path="/market" exact component={MarketContext}/>
 
-        </PrivateRoute>
         <PrivateRoute path="/help" exact component={Help} />
         <PrivateRoute path="/signup" />
       </Switch>

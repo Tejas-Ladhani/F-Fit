@@ -1,0 +1,19 @@
+/* .main{
+    display: inline;
+} */
+
+.searchbox{
+    padding: 10%;
+    background-color: rgb(248, 10, 10);
+}
+
+.searchbox .float{
+    padding: 100;
+}
+
+
+
+.Stocks{
+    margin: 100px;
+    background-color: rgb(66, 56, 56);
+}
