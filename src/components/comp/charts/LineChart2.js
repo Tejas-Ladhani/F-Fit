@@ -10,8 +10,8 @@ function LineChart2(props) {
                         {
                             label: 'Stock value',
                             data: props.array1,
-                            backgroundColor:[ 'rgb(0, 255, 0,0.7)'],
-                            borderColor: 'rgb(0, 245, 1)',
+                            backgroundColor:[ 'rgb(75, 192, 192,0.6)'],
+                            borderColor: 'rgb(75, 192, 192)',
                             pointRadius: 0
                             // hoverBackgroundColor:'rgb(70, 192, 192)'
                         }

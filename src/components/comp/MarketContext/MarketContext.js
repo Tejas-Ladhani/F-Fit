@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createContext } from "react";
-import { Card } from "react-bootstrap";
+import { Card, Form, Button, Row, Col } from "react-bootstrap";
 import "../../comp/MarketContext/MarketContext.css";
 import Market from "../../pages/Market/Market";
 
@@ -37,56 +37,60 @@ function MarketContext() {
   };
 
   return (
-    <div className="main">
-      <div className="searchbox">
-        <form onSubmit={onSubmit}>
-          <div className="float-textbox">
-            <input
-              type="text"
-              placeholder="Search Stocks..."
-              value={temp} //setting value to a temp value
-              onChange={(e) => {
-                settoggle(false);
-                settemp(e.target.value);
-              }}
-            />
-          </div>
-          <div className = "float-buttonsearch" >
-          <input
-            type="submit"
-            value="Search"
-            className="btn btn-primary"
-            onClick={() => {
+
+    <div className="container-fluid">
+      <Form onSubmit={onSubmit}>
+
+
+        <Row className="mt-4">
+          <Col>
+            <Form.Group controlId="formBasicStock">
+              <Form.Control type="txt" required placeholder="Search Stocks..." value={temp} //setting value to a temp value
+                onChange={(e) => {
+                  settoggle(false);
+                  settemp(e.target.value);
+                }} />
+
+            </Form.Group>
+          </Col>
+          <Col>
+            <Button className='mx-3' variant="primary" type="submit" onClick={() => {
               setsearch(temp); //setting the search term after the button is clicked
               settoggle(true);
-            }}
-          />
-          </div>
-          <div className="types">
-            <input
-              type="submit"
-              value="Monthly"
-              className="btn btn-primary"
-              onClick={() => {
-                setstockfunc("TIME_SERIES_MONTHLY");
-                setapiterm("Monthly Time Series");
-              }}
-            />
-            <input
-              type="submit"
-              value="DAILY"
-              className="btn btn-primary"
-              onClick={() => {
-                setstockfunc("TIME_SERIES_DAILY");
-                setapiterm("Time Series (Daily)");
-              }}
-            />
-          </div>
-        </form>
-      </div>
-      <div className="Stocks">
+            }}>
+              SEARCH
+        </Button>
+          </Col>
+        </Row>
+
+        <div className="row">
+
+        <Button className='mx-3' variant="primary" type="submit" onClick={() => {
+          setstockfunc("TIME_SERIES_MONTHLY");
+          setapiterm("Monthly Time Series");
+        }}>
+          Monthly
+    </Button>
+
+
+        <Button className='mx-3' variant="primary" type="submit" onClick={() => {
+          setstockfunc("TIME_SERIES_DAILY");
+          setapiterm("Time Series (Daily)");
+        }}>
+          DAILY
+    </Button>
+
+</div>
+
+      </Form>
+
+
+      <div className="row">
+        <div className="col-md-12">
         <Market stocks={stocks} toggle={toggle} cnt={cnt} apiterm={apiterm} />
+        </div>
       </div>
+
     </div>
   );
 }

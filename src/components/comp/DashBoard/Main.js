@@ -67,7 +67,7 @@ function Main() {
             <div className="charts__left__title">
               <div>
                 <h1>Daily Reports</h1>
-                <p>lorem writing something here</p>
+                {/* <p>lorem writing something here</p> */}
               </div>
               <i className="fa fa-inr" aria-hidden="true"></i>
             </div>
@@ -78,7 +78,7 @@ function Main() {
             <div className="charts__right__title">
               <div>
                 <h1>Stats Reports</h1>
-                <p>write something here</p>
+                {/* <p>write something here</p> */}
               </div>
               <i className="fa fa-inr" aria-hidden="true"></i>
             </div>

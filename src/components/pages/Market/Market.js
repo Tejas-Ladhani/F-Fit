@@ -26,7 +26,7 @@ function Market(props) {
     
   }
   return(
-  <div className = "container">
+  <div >
     <div className="graph">
     <LineChart2 array1={stockopenvalue.reverse()}
                 array2={stockdate.reverse()}/>

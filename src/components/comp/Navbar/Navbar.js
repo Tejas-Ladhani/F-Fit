@@ -43,6 +43,7 @@ function NBar() {
             <Link href={Routes.Help.link}>Help</Link>
           </Nav>
           {/*<img style={{ height: '35px', borderRadius: '17px' }}  /> src={user.photoURL} */}
+          
           {user ? <LogOutBtn/> : <SignInBtn />}
         </Navbar.Collapse>
       </Navbar>
