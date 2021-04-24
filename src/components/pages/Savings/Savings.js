@@ -1,9 +1,10 @@
 import React from 'react'
+import SavingsTable from '../../comp/savings/SavingsTable'
 
 export default function Savings() {
     return (
         <div>
-            <h1>Savings</h1>
+            <SavingsTable/>
         </div>
     );
 }

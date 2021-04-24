@@ -96,7 +96,7 @@ function EApp() {
                         </Form.Group>
                         <Form.Group controlId="formBasicAmount">
                             <Form.Label>Amount</Form.Label>
-                            <Form.Control type="number" placeholder="Enter Amount" required isValid={isValid} autoComplete="off" onChange={(e) => { validateAmount(e); setamountInput(e.target.value) }} />
+                            <Form.Control type="number" placeholder="Enter Amount" required min="1" autoComplete="off" onChange={(e) => { validateAmount(e); setamountInput(e.target.value) }} />
                         </Form.Group>
                         <Button variant="primary" id="addExpenseBtn" type="submit" disabled >
                             Add

@@ -5,8 +5,7 @@ import { db } from '../../../Firebase'
 function ExpenseItem({ title,date , amount,id}) {
     const [user, setUser] = useContext(UserContext);
     
-    // console.log(title+" "+amount+" "+date);
-
+ 
     function deleteExpense(){
         db.collection("user").doc(user.uid).collection('expense').doc(id).delete();
     } 
