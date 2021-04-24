@@ -4,6 +4,7 @@ import { Form, Button, Table } from "react-bootstrap";
 import { db } from '../../../Firebase'
 import firebase from 'firebase'
 import ExpenseItem from './ExpenseItem';
+import './estyle.css'
 // date | title  | amount | delete btn |
 
 
@@ -12,7 +13,7 @@ function EApp() {
     const [user, setUser] = useContext(UserContext);
     const [amountInput, setamountInput] = useState(0);
     const [titleInput, settitleInput] = useState('');
-
+    var isValid=false;
     // lets display the expenses : when should it be fetched  -> At the very first time
 
     useEffect(() => {
@@ -30,13 +31,13 @@ function EApp() {
             setExpense(
                 querySnapshot.docs.map((doc) => ({
                     id: doc.id,
-                    date: doc.data().date +" ",
+                    date: (doc.data().date !== null) ? doc.data().date.toDate().toString() : '',
                     title: doc.data().title,
                     amount: doc.data().amount,
 
                 }))
             );
-        });
+        }, (err) => { console.log("error occured") });
     }
 
     function addExpense(e) {
@@ -54,49 +55,78 @@ function EApp() {
         settitleInput('')
     }
 
+    
+
+    function validate(e){  
+        // Empty field -> dont submit 
+        var element=document.getElementById('addExpenseBtn');
+        if(e.target.value==='') element.disabled = true;
+        else  element.disabled = false;
+    }
+
+  function validateAmount(e){
+        var element=document.getElementById('addExpenseBtn');
+        if(e.target.value > 0)
+            {element.disabled=false;
+                isValid=true;
+            } 
+        else{
+            element.disabled=true;
+                isValid=false;
+        }
+            
+    }
     return (
-        <div>
-            <Form onSubmit={addExpense}>
-                <Form.Group controlId="formBasicExpense">
-                    <Form.Label>Title</Form.Label>
-                    <Form.Control type="text" placeholder="Enter Expense name" onChange={(e) => { settitleInput(e.target.value) }} />
-                    <Form.Text className="text-muted">
-                        We'll never share your data with anyone else.
+        <div className="container-fluid">
+            <div className="row mt-3">
+                <div className="col-md-4 col1">
+                    <Form className="pt-4" onSubmit={addExpense}>
+                        <Form.Group controlId="formBasicExpense">
+                            <Form.Label>Title</Form.Label>
+                            <Form.Control type="text" placeholder="Enter Expense name" autoComplete="off" required onChange={(e) => { validate(e); settitleInput(e.target.value) }} />
+                            <Form.Text className="text-muted">
+                                We'll never share your data with anyone else.
                 </Form.Text>
-                </Form.Group>
-                <Form.Group controlId="formBasicAmount">
-                    <Form.Label>Amount</Form.Label>
-                    <Form.Control type="number" placeholder="Enter Amount" onChange={(e) => { setamountInput(e.target.value) }} />
-                </Form.Group>
-                <Button variant="primary" type="submit" >
-                    Submit
+                        </Form.Group>
+                        <Form.Group controlId="formBasicAmount">
+                            <Form.Label>Amount</Form.Label>
+                            <Form.Control type="number" placeholder="Enter Amount" required isValid={isValid} autoComplete="off" onChange={(e) => {validateAmount(e);  setamountInput(e.target.value) }} />
+                        </Form.Group>
+                        <Button variant="primary" id="addExpenseBtn" type="submit" disabled >
+                            Add
             </Button>
-            </Form>
-            {console.log(Expense)}
-            <Table striped bordered variant="dark">
-                <thead>
-                    <td>Date</td>
-                    <td>Expense</td>
-                    <td>Amount</td>
-                    <td>....</td>
-                </thead>
-                <tbody>
-                {
-                    Expense.map((t) => {
-                        return (
+                    </Form>
+                </div>
 
-                            <ExpenseItem title={t.title}
-                                date={t.date}
-                                amount={t.amount}
-                                id={t.id}
-                            />
 
-                        )
-                    }
-                    )
-                }
-                </tbody>
-            </Table>
+                <div className="col-md-8">
+
+                    <Table className="mt-sm-4" bordered responsive="sm" >
+                        <thead >
+                            <td>Date</td>
+                            <td>Expense</td>
+                            <td>Amount</td>
+                            <td>....</td>
+                        </thead>
+                        <tbody>
+                            {
+                                Expense.map((t) => {
+                                    return (
+
+                                        <ExpenseItem title={t.title}
+                                            date={t.date}
+                                            amount={t.amount}
+                                            id={t.id}
+                                        />
+
+                                    )
+                                }
+                                )
+                            }
+                        </tbody>
+                    </Table>
+                </div>
+            </div>
         </div>
     )
 }

@@ -4,6 +4,7 @@ import './NavBar.css';
 import { UserContext } from '../../contexts/user';
 import * as Routes from '../../routes/Routes';
 import SignInBtn from '../signin-btn/SignInBtn';
+import LogOutBtn from '../signin-btn/LogOutBtn';
 import { BrowserRouter as Router, NavLink, Link, Switch, Route } from 'react-router-dom';
 import Balance from '../../pages/Balance/Balance';
 import Home from '../../pages/Home/Home';
@@ -14,7 +15,7 @@ import NewsContext from '../NewsContext/NewsContext';
 import Savings from '../../pages/Savings/Savings';
 import Emergency from '../../pages/Emergency/Emergency';
 import Help from '../../pages/Help/Help';
-
+import PrivateRoute from  '../../routes/PrivateRoute';
 
 function NBar() {
   const [user, setUser] = useContext(UserContext);
@@ -40,25 +41,26 @@ function NBar() {
 
             <Link href={Routes.Help.link}>Help</Link>
           </Nav>
-          {user ? <img style={{ height: '35px', borderRadius: '17px' }} src={user.photoURL} /> : <SignInBtn />}
+          {/*<img style={{ height: '35px', borderRadius: '17px' }}  /> src={user.photoURL} */}
+          {user ? <LogOutBtn/> : <SignInBtn />}
         </Navbar.Collapse>
       </Navbar>
       <Switch>
         <Route path='/' exact component={Landing} />
-        <Route path="/balance" exact component={Balance} />
-        <Route path="/home" exact component={Home} />
-        <Route path="/expense" exact component={Expenses} />
-        <Route path="/news">
-          <News />
-          <NewsContext />
-        </Route>
-        <Route path="/savings" exact component={Savings} />
-        <Route path="/emergency" exact component={Emergency} />
-        <Route path="/market">
+        <PrivateRoute path="/balance" exact component={Balance} />
+        <PrivateRoute path="/home" exact component={Home} />
+        <PrivateRoute path="/expense" exact component={Expenses} />
+        <PrivateRoute path="/news" exact component ={NewsContext}/>
+          {/* <News /> */}
+          {/* < /> */}
+        {/* </PrivateRoute> */}
+        <PrivateRoute path="/savings" exact component={Savings} />
+        <PrivateRoute path="/emergency" exact component={Emergency} />
+        <PrivateRoute path="/market">
 
-        </Route>
-        <Route path="/help" exact component={Help} />
-        <Route path="/signup" />
+        </PrivateRoute>
+        <PrivateRoute path="/help" exact component={Help} />
+        <PrivateRoute path="/signup" />
       </Switch>
     </Router>
   );
