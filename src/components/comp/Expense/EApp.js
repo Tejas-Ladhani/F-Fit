@@ -4,6 +4,7 @@ import { Form, Button, Table } from "react-bootstrap";
 import { db } from '../../../Firebase'
 import firebase from 'firebase'
 import ExpenseItem from './ExpenseItem';
+import ExpenseTotal from './ExpenseTotal'
 import './estyle.css'
 // date | title  | amount | delete btn |
 
@@ -13,7 +14,10 @@ function EApp() {
     const [user, setUser] = useContext(UserContext);
     const [amountInput, setamountInput] = useState(0);
     const [titleInput, settitleInput] = useState('');
-    var isValid=false;
+    var total = 0;
+
+
+    var isValid = false;
     // lets display the expenses : when should it be fetched  -> At the very first time
 
     useEffect(() => {
@@ -29,13 +33,14 @@ function EApp() {
         db.collection("user").doc(user.uid).collection('expense').onSnapshot(function (querySnapshot) {
 
             setExpense(
-                querySnapshot.docs.map((doc) => ({
-                    id: doc.id,
-                    date: (doc.data().date !== null) ? doc.data().date.toDate().toString() : '',
-                    title: doc.data().title,
-                    amount: doc.data().amount,
+                querySnapshot.docs.map((doc) => (
+                    {
+                        id: doc.id,
+                        date: (doc.data().date !== null) ? doc.data().date.toDate().toString() : '',
+                        title: doc.data().title,
+                        amount: doc.data().amount,
 
-                }))
+                    }))
             );
         }, (err) => { console.log("error occured") });
     }
@@ -55,31 +60,32 @@ function EApp() {
         settitleInput('')
     }
 
-    
 
-    function validate(e){  
+
+    function validate(e) {
         // Empty field -> dont submit 
-        var element=document.getElementById('addExpenseBtn');
-        if(e.target.value==='') element.disabled = true;
-        else  element.disabled = false;
+        var element = document.getElementById('addExpenseBtn');
+        if (e.target.value === '') element.disabled = true;
+        else element.disabled = false;
     }
 
-  function validateAmount(e){
-        var element=document.getElementById('addExpenseBtn');
-        if(e.target.value > 0)
-            {element.disabled=false;
-                isValid=true;
-            } 
-        else{
-            element.disabled=true;
-                isValid=false;
+    function validateAmount(e) {
+        var element = document.getElementById('addExpenseBtn');
+        if (e.target.value > 0) {
+            element.disabled = false;
+            isValid = true;
         }
-            
+        else {
+            element.disabled = true;
+            isValid = false;
+        }
+
     }
     return (
         <div className="container-fluid">
             <div className="row mt-3">
                 <div className="col-md-4 col1">
+                   
                     <Form className="pt-4" onSubmit={addExpense}>
                         <Form.Group controlId="formBasicExpense">
                             <Form.Label>Title</Form.Label>
@@ -90,7 +96,7 @@ function EApp() {
                         </Form.Group>
                         <Form.Group controlId="formBasicAmount">
                             <Form.Label>Amount</Form.Label>
-                            <Form.Control type="number" placeholder="Enter Amount" required isValid={isValid} autoComplete="off" onChange={(e) => {validateAmount(e);  setamountInput(e.target.value) }} />
+                            <Form.Control type="number" placeholder="Enter Amount" required isValid={isValid} autoComplete="off" onChange={(e) => { validateAmount(e); setamountInput(e.target.value) }} />
                         </Form.Group>
                         <Button variant="primary" id="addExpenseBtn" type="submit" disabled >
                             Add
@@ -103,14 +109,19 @@ function EApp() {
 
                     <Table className="mt-sm-4" bordered responsive="sm" >
                         <thead >
-                            <td>Date</td>
-                            <td>Expense</td>
-                            <td>Amount</td>
-                            <td>....</td>
+                            <tr>
+                                <th>Date</th>
+                                <th>Expense</th>
+                                <th>Amount</th>
+                                <th>....</th>
+                            </tr>
+
                         </thead>
                         <tbody>
                             {
                                 Expense.map((t) => {
+                                    total = total + Number(t.amount);
+                                    console.log(total);
                                     return (
 
                                         <ExpenseItem title={t.title}
@@ -123,8 +134,16 @@ function EApp() {
                                 }
                                 )
                             }
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td> <ExpenseTotal total={total}/></td>
+                                <td></td>
+                            </tr>
                         </tbody>
+
                     </Table>
+                   
                 </div>
             </div>
         </div>
