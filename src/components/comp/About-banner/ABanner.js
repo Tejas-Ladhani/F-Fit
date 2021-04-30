@@ -15,8 +15,7 @@ function ABanner() {
 
             {/* <!-- Text --> */}
             <p className="font-size-lg text-muted mb-6">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium placeat nisi minima labore
-              deleniti repellat.
+              
                 </p>
 
             {/* <!-- List --> */}
@@ -77,8 +76,7 @@ function ABanner() {
 
                 {/* <!-- Text --> */}
                 <p className="text-muted mb-6 mb-md-0">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem, perspiciatis aliquid. Sapiente,
-                  reprehenderit.
+                  Learn about some new types of investments and keep up with your future
                     </p>
 
               </div>
