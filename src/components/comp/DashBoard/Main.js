@@ -176,7 +176,7 @@ console.log(e);
           <div className="charts_bottom">
             {/* <PolarChart />
              */}
-             <LineChart/>
+            <LineChart />
           </div>
           <div className="charts_bottom">
           <BarChart />

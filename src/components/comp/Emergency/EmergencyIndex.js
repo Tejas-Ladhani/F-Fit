@@ -1,61 +1,60 @@
-import "./style.css";
 import React, { useContext, useState, useEffect } from 'react'
 import { UserContext } from '../../contexts/user'
 import { Form, Button, Table } from "react-bootstrap";
 import { db } from '../../../Firebase'
 import firebase from 'firebase'
-import SavingListItem from './SavingListItem';
+import EmergencyListItem from './EmergencyListItem';
 // title, amount , type [RD,FD,MUTUAL, OTHERS],COMMENT ,DATE INVESTED ON
-function SavingsTable() {
+function EmergencyIndex() {
 
-    const [saving, setSaving] = useState([]); // will contain the list of saving
-    const [Reqsav, setReqsav] = useState(0); // will contain the value of required saving
+    const [Emergency, setEmergency] = useState([]); // will contain the list of Emergency
+    const [Reqemer, setReqemer] = useState(0); // will contain the value of required Emergency
     const [user, setUser] = useContext(UserContext);
-    var title, amount, type, comment = ' ', date,roi;
+    var title, amount, type, comment = ' ', date;
 
     useEffect(() => {
-        getDecidedSavings();
-        getSavings();
+        getDecidedEmergency();
+        getEmergency();
     }, []);
 
-    function getDecidedSavings() {
+    function getDecidedEmergency() {
         db.collection("user").doc(user.uid).get().then(doc => {
-            setReqsav(doc.data().sav);            
+            setReqemer(doc.data().emer);            
             // console.log(doc.data().exp);
         })
     }
 
-    function getSavings() {
-        db.collection("user").doc(user.uid).collection('savings').onSnapshot(function (querySnapshot) {
-            setSaving(
+    function getEmergency() {
+        db.collection("user").doc(user.uid).collection('emergency').onSnapshot(function (querySnapshot) {
+            setEmergency(
                 querySnapshot.docs.map((doc) => (
                     {
                         id: doc.id,
-                        date: doc.data().date,
+                      
                         title: doc.data().title,
                         amount: doc.data().amount,
                         comment: doc.data().comment,
-                        type: doc.data().type,
+                       
 
                     }))
             );
         }, (err) => { console.log("error occured") });
     }
 
-    function addSavings(e) {
+    function addEmergencys(e) {
         e.preventDefault()
 
-        db.collection("user").doc(user.uid).collection('savings').add({
+        db.collection("user").doc(user.uid).collection('emergency').add({
 
             title: title,
-            date: date,
+
             amount: amount,
-            type: type,
+            
             comment: comment,
 
         })
 
-        document.getElementById('SavingTable').reset();
+        document.getElementById('emergencyTable').reset();
 
 
     }
@@ -65,14 +64,11 @@ function SavingsTable() {
 
     return (
         <div className="container-fluid">
-            <div class="heading">
-                <h1>YOUR SAVINGS</h1>
-            </div>
             <div className="row mt-3">
                 <div className="col-md-4 col1">
-                <div>Savings Target  : {Reqsav} </div>
+                <div>Emergency Target  : {Reqemer} </div>
                     
-                    <Form className="pt-4" id="SavingTable" onSubmit={addSavings} >
+                    <Form className="pt-4" id="emergencyTable" onSubmit={addEmergencys} >
                         <Form.Group controlId="formBasicExpense">
                             <Form.Label>Title</Form.Label>
                             <Form.Control type="text" placeholder="Enter Title" required autoComplete="off" onChange={(e) => { title = e.target.value }} />
@@ -86,29 +82,10 @@ function SavingsTable() {
                             <Form.Label>Comment</Form.Label>
                             <Form.Control type="text" placeholder="Enter Comment" autoComplete="off" onChange={(e) => { comment = e.target.value }} />
                         </Form.Group>
-                        <Form.Group controlId="formBasicDate">
-                            <Form.Label>Date</Form.Label>
-                            <Form.Control type="date" placeholder="Enter Date of Investment" required autoComplete="off" onChange={(e) => { date = e.target.value }} />
-                        </Form.Group>
-                        <Form.Group controlId="formBasicAmount">
-                            <Form.Label>Rate of Return</Form.Label>
-                            <Form.Control type="number" placeholder="ROI" min="1" required autoComplete="off" onChange={(e) => {roi = e.target.value }} />
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Type of Investment</Form.Label>
-                            <Form.Control as="select" size="md" required onChange={(e) => { type = e.target.value }}>
-                                <option>Mutual Funds</option>
-                                <option>Fixed Deposit</option>
-                                <option>Reccuring Deposit</option>
-                                <option>CryptoCurrency</option>
-                                <option>Stocks</option>
-                                <option>Gold</option>
-                                <option>Other</option>
-                            </Form.Control>
+                        
+                        
 
-                        </Form.Group>
-
-                        <Button variant="primary" id="addSavingsBtn" type="submit" >
+                        <Button variant="primary" id="addEmergencysBtn" type="submit" >
                             Add
                         </Button>
                     </Form>
@@ -120,9 +97,9 @@ function SavingsTable() {
                     <Table className="mt-sm-4" bordered striped responsive="sm" >
                         <thead >
                             <tr>
-                                <th>Date</th>
+                                
                                 <th>Title</th>
-                                <th>Type</th>
+                            
                                 <th>Comment</th>
                                 <th>Amount</th>
                                 <th>....</th>
@@ -132,15 +109,15 @@ function SavingsTable() {
                         <tbody>
                             {
                                 // { title,date ,amount,comment,type,id}
-                                saving.map((t) => {
+                                Emergency.map((t) => {
 
                                     return (
 
-                                        <SavingListItem title={t.title}
-                                            date={t.date}
+                                        <EmergencyListItem title={t.title}
+                                        
                                             amount={t.amount}
                                             comment={t.comment}
-                                            type={t.type}
+                                          
                                             id={t.id}
                                         />
 
@@ -160,4 +137,4 @@ function SavingsTable() {
     )
 }
 
-export default SavingsTable
+export default EmergencyIndex
