@@ -27,24 +27,25 @@ function NBar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Link to={Routes.Home.link}>Home</Link>
-            <Link to={Routes.Balance.link}>Balance</Link>
-            <NavDropdown title="Break" id="basic-nav-dropdown">
+            {user ? <Link to={Routes.Home.link}>Home</Link> : <Link />}
+            {user ? <Link to={Routes.Balance.link}>Balance</Link>:<Link />}
+            {user ?<NavDropdown title="Break" id="basic-nav-dropdown">
 
               <NavDropdown.Item><Link to={Routes.Savings.link}>Savings</Link></NavDropdown.Item>
               <NavDropdown.Item ><Link to={Routes.Expense.link}>Expense</Link></NavDropdown.Item>
               <NavDropdown.Item><Link to={Routes.Emergency.link}>Emergency</Link></NavDropdown.Item>
-            </NavDropdown>
+            </NavDropdown>:<Link />}
 
-            <Link to={Routes.News.link}>News</Link>
+            {user ?<Link to={Routes.News.link}>News</Link>:<Link/>}
 
-            <Link to={Routes.Market.link}>Market</Link>
+            {user ?<Link to={Routes.Market.link}>Market</Link>:<Link/>}
 
-            <Link href={Routes.Help.link}>Help</Link>
+            {user ?<Link href={Routes.Help.link}>Help</Link>:<Link/>}
           </Nav>
           {/*<img style={{ height: '35px', borderRadius: '17px' }}  /> src={user.photoURL} */}
           
           {user ? <LogOutBtn/> : <SignInBtn />}
+          
         </Navbar.Collapse>
       </Navbar>
       <Switch>

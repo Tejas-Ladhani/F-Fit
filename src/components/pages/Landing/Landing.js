@@ -2,16 +2,30 @@ import SBanner from '../../comp/site-banner/SBanner';
 import FBanner from '../../comp/Features-banner/FBanner';
 import ABanner from '../../comp/About-banner/ABanner';
 import StsBanner from '../../comp/States-Banner/StsBanner';
+import { UserContext } from '../../contexts/user';
+import Home from '../../pages/Home/Home';
+import {useContext} from 'react';
 
 function Landing() {
+  const [user, setUser] = useContext(UserContext);
   return (
-    <div >
+
+    <div>
+      {user ? <Home /> :  <div >
       <SBanner/>
       <FBanner/>
       <ABanner/>
       <StsBanner />
-    
+    </div> }
     </div>
+    
+    // <div >
+    //   <SBanner/>
+    //   <FBanner/>
+    //   <ABanner/>
+    //   <StsBanner />
+    
+    // </div>
   );
 }
 

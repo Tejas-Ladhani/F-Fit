@@ -1,3 +1,4 @@
+import "./style.css";
 import React, { useContext, useState, useEffect } from 'react'
 import { UserContext } from '../../contexts/user'
 import { Form, Button, Table } from "react-bootstrap";
@@ -10,7 +11,7 @@ function SavingsTable() {
     const [saving, setSaving] = useState([]); // will contain the list of saving
 
     const [user, setUser] = useContext(UserContext);
-    var title, amount, type, comment = ' ', date;
+    var title, amount, type, comment = ' ', date,roi;
 
     useEffect(() => {
         getSavings();
@@ -58,6 +59,9 @@ function SavingsTable() {
 
     return (
         <div className="container-fluid">
+            <div class="heading">
+                <h1>YOUR SAVINGS</h1>
+            </div>
             <div className="row mt-3">
                 <div className="col-md-4 col1">
 
@@ -79,14 +83,19 @@ function SavingsTable() {
                             <Form.Label>Date</Form.Label>
                             <Form.Control type="date" placeholder="Enter Date of Investment" required autoComplete="off" onChange={(e) => { date = e.target.value }} />
                         </Form.Group>
-
+                        <Form.Group controlId="formBasicAmount">
+                            <Form.Label>Rate of Return</Form.Label>
+                            <Form.Control type="number" placeholder="ROI" min="1" required autoComplete="off" onChange={(e) => {roi = e.target.value }} />
+                        </Form.Group>
                         <Form.Group>
                             <Form.Label>Type of Investment</Form.Label>
                             <Form.Control as="select" size="md" required onChange={(e) => { type = e.target.value }}>
                                 <option>Mutual Funds</option>
-                                <option>Fixed Deposite</option>
-                                <option>Reccurence Deposite</option>
-                                <option>Crypto Currency</option>
+                                <option>Fixed Deposit</option>
+                                <option>Reccuring Deposit</option>
+                                <option>CryptoCurrency</option>
+                                <option>Stocks</option>
+                                <option>Gold</option>
                                 <option>Other</option>
                             </Form.Control>
 

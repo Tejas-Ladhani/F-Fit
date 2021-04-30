@@ -9,11 +9,35 @@ function BDropDown() {
   const [user, setUser] = useContext(UserContext);
   const [balance, setbalance] = useState(0);
   const [ratio, setratio] = useState('50:30:20');
+  var exp,sav,emer;
   const onSubmit = (e) => {
     e.preventDefault();
+    console.log(ratio);
+    if (ratio === '50:30:20') {
+      exp = balance * 0.5;
+      sav = balance * 0.3;
+      emer = balance * 0.2;
+ 
+    }else if(ratio='40:40:20')
+    {
+      exp = balance * 0.4;
+      sav = balance * 0.4;
+      emer = balance * 0.2;
+    }
+    else if(ratio='35:35:30')
+    {
+      exp = balance * 0.35;
+      sav = balance * 0.35;
+      emer = balance * 0.30;
+    }
+
     db.collection('user').doc(user.uid).set({
       balance: balance,
       ratio_choosed: ratio,
+      exp: exp,
+      sav: sav,
+      emer: emer,
+ 
     }).then(() => alert("your data saved !")
     )
 
