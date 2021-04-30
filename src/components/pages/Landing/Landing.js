@@ -3,7 +3,7 @@ import FBanner from '../../comp/Features-banner/FBanner';
 import ABanner from '../../comp/About-banner/ABanner';
 import StsBanner from '../../comp/States-Banner/StsBanner';
 import { UserContext } from '../../contexts/user';
-import Home from '../../pages/Home/Home';
+import Balance from '../../pages/Balance/Balance';
 import {useContext} from 'react';
 
 function Landing() {
@@ -11,7 +11,7 @@ function Landing() {
   return (
 
     <div>
-      {user ? <Home /> :  <div >
+      {user ? <Balance /> :  <div >
       <SBanner/>
       <FBanner/>
       <ABanner/>

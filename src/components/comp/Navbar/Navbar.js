@@ -42,7 +42,7 @@ function NBar() {
 
             {user ?<Link href={Routes.Help.link}>Help</Link>:<Link/>}
           </Nav>
-          {/*<img style={{ height: '35px', borderRadius: '17px' }}  /> src={user.photoURL} */}
+          {user ?<img src={user.photoURL} style={{ height: '35px', borderRadius: '17px' ,marginBottom:'12px',marginRight:'10px'}} /> :<div></div> }
           
           {user ? <LogOutBtn/> : <SignInBtn />}
           

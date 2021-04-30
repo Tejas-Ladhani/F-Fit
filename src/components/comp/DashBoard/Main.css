@@ -21,7 +21,7 @@
 
 .dashboard .main__cards {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 30px;
   margin: 20px 0;
 }
@@ -152,8 +152,8 @@
 }
 
 .card3 {
-  background: #d6d8d9;
-  color: #3a3e41;
+  background: #c1e5f7;
+  color: #fa8e00;
   text-align: center;
   padding: 25px;
   border-radius: 5px;

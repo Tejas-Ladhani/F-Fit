@@ -11,12 +11,12 @@ ReactDOM.render(
   <React.StrictMode>
     <UserContextProvider>   
     <NBar />
-  
+
 
     </UserContextProvider>
 
     {/* Removed Footer for now , still there in comp */}
-    <Footer />
+   
   </React.StrictMode>,
 
   document.getElementById('root')

@@ -15,7 +15,8 @@ function EApp() {
     const [user, setUser] = useContext(UserContext);
     const [amountInput, setamountInput] = useState(0);
     const [titleInput, settitleInput] = useState('');
-    var total = 0, exp;
+    const[remain,setremain] = useState(0);  
+    var total = 0, exp,count=0;
 
 
     var isValid = false;
@@ -42,7 +43,7 @@ function EApp() {
 
 
         db.collection("user").doc(user.uid).collection('expense').onSnapshot(function (querySnapshot) {
-
+            // console.log(querySnapshot.docs.length);
             setExpense(
                 querySnapshot.docs.map((doc) => (
                     {
@@ -50,7 +51,7 @@ function EApp() {
                         date: (doc.data().date !== null) ? doc.data().date.toDate().toString() : '',
                         title: doc.data().title,
                         amount: doc.data().amount,
-
+                        
                     }))
             );
         }, (err) => { console.log("error occured") });
@@ -65,8 +66,8 @@ function EApp() {
             amount: amountInput
 
         })
-
         // now we must clear the field after pressing enter
+        setremain(Reqexpense-amountInput);
         setamountInput('')
         settitleInput('')
     }
@@ -100,10 +101,11 @@ function EApp() {
 
                 <div className="col-md-4 col1">
                     
-                    <div>Expense Target  : {Reqexpense} </div>
+                    <div>Total Expenditure Balance  : {Reqexpense} </div>
+                    {/* <div>Remaining Expenditure Balance  : {remain} </div> */}
                     <Form className="pt-4" onSubmit={addExpense}>
                         <Form.Group controlId="formBasicExpense">
-                            <Form.Label>Title</Form.Label>
+                            <Form.Label>EXPENSE</Form.Label>
                             <Form.Control type="text" placeholder="Enter Expense name" autoComplete="off" required onChange={(e) => { validate(e); settitleInput(e.target.value) }} />
                             <Form.Text className="text-muted">
                                 We'll never share your data with anyone else.
@@ -143,6 +145,7 @@ function EApp() {
                                             date={t.date}
                                             amount={t.amount}
                                             id={t.id}
+                                            remain = {t.remain}
                                         />
 
                                     )
