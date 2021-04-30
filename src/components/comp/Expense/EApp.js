@@ -11,24 +11,35 @@ import './estyle.css'
 
 function EApp() {
     const [Expense, setExpense] = useState([]); // will contain the list of Expenses
+    const [Reqexpense, setReqexpense] = useState(0); // will contain the value of required expense
     const [user, setUser] = useContext(UserContext);
     const [amountInput, setamountInput] = useState(0);
     const [titleInput, settitleInput] = useState('');
-    var total = 0;
+    var total = 0, exp;
 
 
     var isValid = false;
     // lets display the expenses : when should it be fetched  -> At the very first time
 
+    // [balance,exp,sav]
     useEffect(() => {
+        getDecidedExpense();
         getExpense();
     }, []);
 
+
+    function getDecidedExpense() {
+        db.collection("user").doc(user.uid).get().then(doc => {
+            setReqexpense(doc.data().exp);            
+            // console.log(doc.data().exp);
+        })
+    }
 
     function getExpense() {
         /**
          * We can have use get instead of snapShot but ss bcz whenever  data is added it will get reflected to our list (display).
          */
+
 
         db.collection("user").doc(user.uid).collection('expense').onSnapshot(function (querySnapshot) {
 
@@ -81,11 +92,15 @@ function EApp() {
         }
 
     }
+
     return (
         <div className="container-fluid">
             <div className="row mt-3">
+
+
                 <div className="col-md-4 col1">
-                   
+                    
+                    <div>Expense Target  : {Reqexpense} </div>
                     <Form className="pt-4" onSubmit={addExpense}>
                         <Form.Group controlId="formBasicExpense">
                             <Form.Label>Title</Form.Label>
@@ -121,7 +136,7 @@ function EApp() {
                             {
                                 Expense.map((t) => {
                                     total = total + Number(t.amount);
-                                    console.log(total);
+                                    // console.log(total);
                                     return (
 
                                         <ExpenseItem title={t.title}
@@ -137,13 +152,13 @@ function EApp() {
                             <tr>
                                 <td></td>
                                 <td></td>
-                                <td> <ExpenseTotal total={total}/></td>
+                                <td> <ExpenseTotal total={total} /></td>
                                 <td></td>
                             </tr>
                         </tbody>
 
                     </Table>
-                   
+
                 </div>
             </div>
         </div>

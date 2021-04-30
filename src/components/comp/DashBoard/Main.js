@@ -3,16 +3,28 @@
   17-04-2021
 */
 import "./Main.css";
-
+import { useEffect, useState, useContext } from 'react';
+import { db } from '../../../Firebase';
+import { UserContext } from '../../contexts/user';
 import BarChart from "../charts/BarChart";
 import PiChart from "../charts/PiChart";
 import LineChart from "../charts/LineChart";
 
 function Main() {
-  var OverAll = [{ title: 'Balance', amount: '$5000', cardname: 'card1' },
-  { title: 'Investments', amount: '$1000', cardname: 'card2' },
-  { title: 'Expense', amount: '$200', cardname: 'card3' },
-  { title: 'Savings', amount: '$3000', cardname: 'card4' },
+  const [user, setUser] = useContext(UserContext);
+  const [e, sete] = useState([]);
+
+  useEffect(()=>{
+    db.collection("user").doc(user.uid).onSnapshot(function (querySnapshot) {
+     sete([querySnapshot.data().balance,querySnapshot.data().exp,querySnapshot.data().sav])
+     console.log(e); 
+  }, (err) => { console.log("error occured") });
+  },[])
+  
+  var OverAll = [{ title: 'Balance', amount: parseInt(e[0]), cardname: 'card1' },
+  { title: 'Investments', amount: e[1], cardname: 'card2' },
+  { title: 'Expense', amount: e[2], cardname: 'card3' },
+  { title: 'Savings', amount: e[1], cardname: 'card4' },
   ]
 
   var cards = OverAll.map((value) => {
@@ -97,7 +109,7 @@ function Main() {
           <div className="charts_bottom">
             {/* <PolarChart />
              */}
-             <LineChart/>
+            <LineChart />
           </div>
 
         </div>
