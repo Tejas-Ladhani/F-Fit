@@ -10,9 +10,6 @@
   font-weight: 700;
 }
 
-.dashboard .main__container {
-  padding: 20px 35px;
-}
 
 .dashboard .main__title {
   display: flex;
@@ -59,6 +56,7 @@
   border-radius: 5px;
   background: #ffffff;
   box-shadow: 5px 5px 13px #ededed, -5px -5px 13px #ffffff;
+
 }
 
 .dashboard .charts__left__title {
@@ -210,3 +208,4 @@
   }
   
 }
+

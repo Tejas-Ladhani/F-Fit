@@ -21,7 +21,7 @@ function BarChart(props) {
                             }
                         ]
                     }}
-                height={400}
+                // height={400}
                 // width={'40vw'}
 
                 options={{
