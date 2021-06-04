@@ -1,7 +1,7 @@
 import './ABanner.css';
 function ABanner() {
   return (
-    <section className="pt-8 pt-md-11 bg-gradient-light-white">
+    <section className="pt-8 pt-md-11 bg-gradient-light-white abanner">
       <div className="container">
 
         <div className="row align-items-center">
