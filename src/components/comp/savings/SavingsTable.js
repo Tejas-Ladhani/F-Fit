@@ -69,9 +69,7 @@ function SavingsTable() {
 
     return (
         <div className="container-fluid">
-            <div className="heading">
-                <h1>YOUR SAVINGS</h1>
-            </div>
+            
             <div className="row mt-3">
                 <div className="col-md-4 col1">
                     <div>Savings Target  : {Reqsav} </div>

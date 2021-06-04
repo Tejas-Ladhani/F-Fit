@@ -23,7 +23,7 @@ function NBar() {
   return (
     <Router>
       <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="/">F.Fit</Navbar.Brand>
+        <Navbar.Brand >F.Fit</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
