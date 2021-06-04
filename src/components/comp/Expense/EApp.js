@@ -31,9 +31,11 @@ function EApp() {
 
     function getDecidedExpense() {
         db.collection("user").doc(user.uid).get().then(doc => {
-            setReqexpense(doc.data().exp);            
+            if(doc.data().containsKey('exp'))
+                setReqexpense(doc.data().exp);    
+
             // console.log(doc.data().exp);
-        })
+        }).catch((err)=>{console.log(err)})
     }
 
     function getExpense() {

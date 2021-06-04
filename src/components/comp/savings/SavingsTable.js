@@ -11,7 +11,7 @@ function SavingsTable() {
     const [saving, setSaving] = useState([]); // will contain the list of saving
     const [Reqsav, setReqsav] = useState(0); // will contain the value of required saving
     const [user, setUser] = useContext(UserContext);
-    var title, amount, type, comment = ' ', date,roi;
+    var title, amount, type, comment = ' ', date, roi;
 
     useEffect(() => {
         getDecidedSavings();
@@ -20,9 +20,13 @@ function SavingsTable() {
 
     function getDecidedSavings() {
         db.collection("user").doc(user.uid).get().then(doc => {
-            setReqsav(doc.data().sav);            
-            // console.log(doc.data().exp);
-        })
+            console.log(doc.data.containsKey('sav'))
+            // try { setReqsav(doc.data().sav); }
+            // catch(e){
+            //     console.log(e)
+            // }
+
+        }).catch((err) => { console.log(err) })
     }
 
     function getSavings() {
@@ -65,13 +69,13 @@ function SavingsTable() {
 
     return (
         <div className="container-fluid">
-            <div class="heading">
+            <div className="heading">
                 <h1>YOUR SAVINGS</h1>
             </div>
             <div className="row mt-3">
                 <div className="col-md-4 col1">
-                <div>Savings Target  : {Reqsav} </div>
-                    
+                    <div>Savings Target  : {Reqsav} </div>
+
                     <Form className="pt-4" id="SavingTable" onSubmit={addSavings} >
                         <Form.Group controlId="formBasicExpense">
                             <Form.Label>Title</Form.Label>
@@ -92,7 +96,7 @@ function SavingsTable() {
                         </Form.Group>
                         <Form.Group controlId="formBasicAmount">
                             <Form.Label>Rate of Return</Form.Label>
-                            <Form.Control type="number" placeholder="ROI" min="1" required autoComplete="off" onChange={(e) => {roi = e.target.value }} />
+                            <Form.Control type="number" placeholder="ROI" min="1" required autoComplete="off" onChange={(e) => { roi = e.target.value }} />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Type of Investment</Form.Label>

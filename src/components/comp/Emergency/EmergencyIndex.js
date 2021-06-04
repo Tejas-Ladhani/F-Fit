@@ -19,9 +19,10 @@ function EmergencyIndex() {
 
     function getDecidedEmergency() {
         db.collection("user").doc(user.uid).get().then(doc => {
-            setReqemer(doc.data().emer);            
+            if (doc.data().containsKey('emer'))
+                setReqemer(doc.data().emer);
             // console.log(doc.data().exp);
-        })
+        }).catch((err) => { console.log(err) })
     }
 
     function getEmergency() {
@@ -30,11 +31,11 @@ function EmergencyIndex() {
                 querySnapshot.docs.map((doc) => (
                     {
                         id: doc.id,
-                      
+
                         title: doc.data().title,
                         amount: doc.data().amount,
                         comment: doc.data().comment,
-                       
+
 
                     }))
             );
@@ -49,7 +50,7 @@ function EmergencyIndex() {
             title: title,
 
             amount: amount,
-            
+
             comment: comment,
 
         })
@@ -66,8 +67,8 @@ function EmergencyIndex() {
         <div className="container-fluid">
             <div className="row mt-3">
                 <div className="col-md-4 col1">
-                <div>Emergency Target  : {Reqemer} </div>
-                    
+                    <div>Emergency Target  : {Reqemer} </div>
+
                     <Form className="pt-4" id="emergencyTable" onSubmit={addEmergencys} >
                         <Form.Group controlId="formBasicExpense">
                             <Form.Label>Title</Form.Label>
@@ -82,8 +83,8 @@ function EmergencyIndex() {
                             <Form.Label>Comment</Form.Label>
                             <Form.Control type="text" placeholder="Enter Comment" autoComplete="off" onChange={(e) => { comment = e.target.value }} />
                         </Form.Group>
-                        
-                        
+
+
 
                         <Button variant="primary" id="addEmergencysBtn" type="submit" >
                             Add
@@ -97,9 +98,9 @@ function EmergencyIndex() {
                     <Table className="mt-sm-4" bordered striped responsive="sm" >
                         <thead >
                             <tr>
-                                
+
                                 <th>Title</th>
-                            
+
                                 <th>Comment</th>
                                 <th>Amount</th>
                                 <th>....</th>
@@ -114,10 +115,10 @@ function EmergencyIndex() {
                                     return (
 
                                         <EmergencyListItem title={t.title}
-                                        
+
                                             amount={t.amount}
                                             comment={t.comment}
-                                          
+
                                             id={t.id}
                                         />
 
