@@ -1,9 +1,7 @@
 import React from 'react'
 import { Line } from 'react-chartjs-2'
 function LineChart(props) {
-    console.log(props);
-    console.log(props.amount);
-    console.log(props.date);
+    
     return (
         <>
             <Line

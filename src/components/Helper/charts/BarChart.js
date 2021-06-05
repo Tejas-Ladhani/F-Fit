@@ -1,7 +1,7 @@
 import React from 'react'
 import { Bar } from 'react-chartjs-2'
 function BarChart(props) {
-    console.log(props);
+    
     return (
         <div className="BChart">
             <Bar
@@ -21,7 +21,7 @@ function BarChart(props) {
                             }
                         ]
                     }}
-                height={'100rem'}
+                height={100}
                 // width={'40vw'}
                    
                 options = {{

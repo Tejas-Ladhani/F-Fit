@@ -1,14 +1,19 @@
-import firebase from "firebase"
-import "firebase/auth"
+import firebase from 'firebase/app'
+import 'firebase/firestore'
+import 'firebase/auth'
+import 'firebase/storage'
 
 const firebaseConfig = {
      
   };
-
-const firebaseApp = firebase.initializeApp(firebaseConfig)
+  var firebaseApp;
+  if (!firebase.apps.length) {
+    firebaseApp=firebase.initializeApp(firebaseConfig);
+  }
+  
 const db =firebaseApp.firestore();
-const auth=firebase.auth();
-const storage=firebase.storage();
+const auth=firebaseApp.auth();
+const storage=firebaseApp.storage();
 const gAuthProvider=new firebase.auth.GoogleAuthProvider();
 
 export {db,auth,gAuthProvider,storage,firebaseApp};

@@ -8,7 +8,7 @@ function EmergencyIndex() {
 
     const [Emergency, setEmergency] = useState([]); // will contain the list of Emergency
     const [Reqemer, setReqemer] = useState(0); // will contain the value of required Emergency
-    const [user, setUser] = useContext(UserContext);
+    const [user, ] = useContext(UserContext);
     var title, amount, type, comment = ' ', date;
 
     useEffect(() => {
@@ -20,8 +20,8 @@ function EmergencyIndex() {
         db.collection("user").doc(user.uid).get().then(doc => {
             if (doc.data().containsKey('emer'))
                 setReqemer(doc.data().emer);
-            // console.log(doc.data().exp);
-        }).catch((err) => { console.log(err) })
+            
+        }).catch((err) => {  })
     }
 
     function getEmergency() {

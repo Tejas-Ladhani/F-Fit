@@ -1,10 +1,10 @@
-import React,{useContext, useState} from 'react'
+import React,{useContext} from 'react'
 import './style.css'
 import { signInWithGoogle } from "../../services/auth"
 import { UserContext } from '../../contexts/user'
 
 function SignInBtn() {
-    const [user, setUser] = useContext(UserContext);
+    const [/*user*/, setUser] = useContext(UserContext);
 
     const signInBtnClick = async () => {
         let userBySignIn = await signInWithGoogle()

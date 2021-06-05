@@ -2,7 +2,7 @@ import { useContext, useState, useEffect } from 'react'
 import { UserContext } from '../../contexts/user'
 import { Form, Button, Table } from "react-bootstrap";
 import { db } from '../../../Firebase'
-import firebase from 'firebase'
+import firebase from 'firebase/app'
 import ExpenseItem from './ExpenseItem';
 import ExpenseTotal from './ExpenseTotal'
 import './estyle.css'
@@ -12,11 +12,11 @@ import './estyle.css'
 function EApp() {
     const [Expense, setExpense] = useState([]); // will contain the list of Expenses
     const [Reqexpense, setReqexpense] = useState(0); // will contain the value of required expense
-    const [user, setUser] = useContext(UserContext);
+    const [user, /*setUser*/] = useContext(UserContext);
     const [amountInput, setamountInput] = useState(0);
     const [titleInput, settitleInput] = useState('');
-    const [remain, setremain] = useState(0);
-    var total = 0, exp, count = 0;
+    const [/*remain*/, setremain] = useState(0);
+    var total = 0;
 
 
     var isValid = false;
@@ -34,7 +34,7 @@ function EApp() {
             if (doc.data().containsKey('exp'))
                 setReqexpense(doc.data().exp);
 
-            // console.log(doc.data().exp);
+            
         }).catch((err) => { console.log(err) })
     }
 
@@ -45,7 +45,7 @@ function EApp() {
 
 
         db.collection("user").doc(user.uid).collection('expense').onSnapshot(function (querySnapshot) {
-            // console.log(querySnapshot.docs.length);
+         
             setExpense(
                 querySnapshot.docs.map((doc) => (
                     {
@@ -140,7 +140,7 @@ function EApp() {
                             {
                                 Expense.map((t) => {
                                     total = total + Number(t.amount);
-                                    // console.log(total);
+                                    
                                     return (
 
                                         <ExpenseItem title={t.title}

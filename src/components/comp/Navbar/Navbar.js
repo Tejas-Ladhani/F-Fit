@@ -9,7 +9,7 @@ import {Balance,Home,Expenses,Landing,News,Savings,Emergency,Help} from '../../p
 import PrivateRoute from  '../../routes/PrivateRoute';
 
 function NBar() {
-  const [user, setUser] = useContext(UserContext);
+  const [user, /*setUser*/] = useContext(UserContext);
   return (
     <Router>
       <Navbar bg="light" expand="lg">
@@ -32,7 +32,7 @@ function NBar() {
 
             {user ?<Link href={Routes.Help.link}>Help</Link>:<Link/>}
           </Nav>
-          {user ?<img src={user.photoURL} style={{ height: '35px', borderRadius: '17px' ,marginBottom:'12px',marginRight:'10px'}} /> :<div></div> }
+          {user ?<img src={user.photoURL} style={{ height: '35px', borderRadius: '17px' ,marginBottom:'12px',marginRight:'10px'}} alt="User profile"/> :<div></div> }
           
           {user ? <LogOutBtn/> : <SignInBtn />}
           

@@ -70,8 +70,6 @@ function Main() {
     }, (err) => { console.log("error occured") });
     setno([no_savings, no_expense, no_emer]);
   }
-  console.log(expamount);
-  console.log(expdate);
 
   var OverAll = [{ title: 'Balance', amount: parseInt(e[0]), cardname: 'card1' },
   { title: 'Savings', amount: e[2], cardname: 'card2' },
@@ -79,9 +77,9 @@ function Main() {
   { title: 'Emergency', amount: e[3], cardname: 'card4' },
   ]
 
-  var cards = OverAll.map((value) => {
+  var cards = OverAll.map((value,index) => {
     return (
-      <div className={value.cardname}>
+      <div className={value.cardname} key={index}>
         <h1>{value.title}</h1>
         <p>{value.amount}</p>
       </div>
@@ -96,9 +94,9 @@ function Main() {
   ];
 
 
-  var cards_at_top = cards_at_top_data.map((value) => {
+  var cards_at_top = cards_at_top_data.map((value,index) => {
     return (
-      <div className="Main__Top__card">
+      <div className="Main__Top__card" key={index}>
 
         <div className="card_content">
           <div><i

@@ -1,36 +1,33 @@
 import "./style.css";
-import React, { useContext, useState, useEffect } from 'react'
+import  { useContext, useState, useEffect } from 'react'
 import { UserContext } from '../../contexts/user'
 import { Form, Button, Table } from "react-bootstrap";
 import { db } from '../../../Firebase'
-import firebase from 'firebase'
+
 import SavingListItem from './SavingListItem';
 // title, amount , type [RD,FD,MUTUAL, OTHERS],COMMENT ,DATE INVESTED ON
 function SavingsTable() {
 
     const [saving, setSaving] = useState([]); // will contain the list of saving
-    const [Reqsav, setReqsav] = useState(0); // will contain the value of required saving
-    const [user, setUser] = useContext(UserContext);
-    var title, amount, type, comment = ' ', date, roi;
+    const [Reqsav,] = useState(0); // will contain the value of required saving
+    const [user,] = useContext(UserContext);
+    var title, amount, type, comment = ' ', date;
+    var collection_user_doc = db.collection("user").doc(user.uid);
 
     useEffect(() => {
+
         getDecidedSavings();
         getSavings();
-    }, []);
+    }, [collection_user_doc]);
 
     function getDecidedSavings() {
-        db.collection("user").doc(user.uid).get().then(doc => {
-            console.log(doc.data.containsKey('sav'))
-            // try { setReqsav(doc.data().sav); }
-            // catch(e){
-            //     console.log(e)
-            // }
-
-        }).catch((err) => { console.log(err) })
+        collection_user_doc.get().then(doc => {
+            doc.data.containsKey('sav')
+        }).catch((err) => { })
     }
 
     function getSavings() {
-        db.collection("user").doc(user.uid).collection('savings').onSnapshot(function (querySnapshot) {
+        collection_user_doc.collection('savings').onSnapshot(function (querySnapshot) {
             setSaving(
                 querySnapshot.docs.map((doc) => (
                     {
@@ -49,7 +46,7 @@ function SavingsTable() {
     function addSavings(e) {
         e.preventDefault()
 
-        db.collection("user").doc(user.uid).collection('savings').add({
+        collection_user_doc.collection('savings').add({
 
             title: title,
             date: date,
@@ -69,7 +66,7 @@ function SavingsTable() {
 
     return (
         <div className="container-fluid">
-            
+
             <div className="row mt-3">
                 <div className="col-md-4 col1">
                     <div>Savings Target  : {Reqsav} </div>
@@ -92,10 +89,7 @@ function SavingsTable() {
                             <Form.Label>Date</Form.Label>
                             <Form.Control type="date" placeholder="Enter Date of Investment" required autoComplete="off" onChange={(e) => { date = e.target.value }} />
                         </Form.Group>
-                        <Form.Group controlId="formBasicAmount">
-                            <Form.Label>Rate of Return</Form.Label>
-                            <Form.Control type="number" placeholder="ROI" min="1" required autoComplete="off" onChange={(e) => { roi = e.target.value }} />
-                        </Form.Group>
+
                         <Form.Group>
                             <Form.Label>Type of Investment</Form.Label>
                             <Form.Control as="select" size="md" required onChange={(e) => { type = e.target.value }}>

@@ -3,7 +3,7 @@ export const signInWithGoogle = async () => {
     let user;
     await auth.signInWithPopup(gAuthProvider)
         .then((res) => {
-            console.log(res.user);
+          
             user = res.user;
         })
         .catch((error) => {

@@ -1,18 +1,18 @@
 import "./BDropDown.css";
 import { useState, useContext } from "react";
-import { Form, InputGroup, Button } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import { db } from '../../../Firebase'
 import { UserContext } from '../../contexts/user'
 
 function BDropDown() {
 
-  const [user, setUser] = useContext(UserContext);
+  const [user, ] = useContext(UserContext);
   const [balance, setbalance] = useState(0);
   const [ratio, setratio] = useState('50:30:20');
   var exp, sav, emer;
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(ratio);
+
     if (ratio === '50:30:20') {
       exp = balance * 0.5;
       sav = balance * 0.3;

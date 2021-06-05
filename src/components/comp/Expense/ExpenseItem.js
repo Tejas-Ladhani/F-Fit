@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 import { UserContext } from '../../contexts/user'
 import { db } from '../../../Firebase' 
 function ExpenseItem({ title,date , amount,id}) {
-    const [user, setUser] = useContext(UserContext);
+    const [user, /*setUser*/] = useContext(UserContext);
     
  
     function deleteExpense(){

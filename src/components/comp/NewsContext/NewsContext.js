@@ -4,7 +4,7 @@ import '../../comp/NewsContext/NewsContext.css';
 function NewsContext(props) {
 
     if (props.news != null) {
-        console.log(props.news);
+        
         var shownews = props.news.articles.map((articles) =>  <div >
          <Card className="col-sm-12 my-3 news-card">
             {/* <Card.Img variant="top" src={articles.urltoImage} /> */}

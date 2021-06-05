@@ -7,12 +7,12 @@ export default function News() {
         async function fetchData() {
             const response = await fetch('https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=399670270042486fa7ad704b8edacfc9');
             const data = await response.json();
-            console.log(data);
+         
             setnews(data);
         }
         fetchData();
     }, []);
-    console.log(news);
+    
     return (
         <div className="container">
             <div className="row">

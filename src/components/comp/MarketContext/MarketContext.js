@@ -1,5 +1,5 @@
-import { useState, useEffect, createContext } from "react";
-import { Card, Form, Button, Row, Col } from "react-bootstrap";
+import { useState, useEffect } from "react";
+import {  Form, Button, Row, Col } from "react-bootstrap";
 import "./MarketContext.css";
 import { Market } from "../../pages";
 
@@ -10,8 +10,6 @@ function MarketContext() {
   const [toggle, settoggle] = useState(false);
   const [temp, settemp] = useState("");
   const [search, setsearch] = useState(""); //search term from the search box
-
-  const apiKey = "K19780Y8NDDIIFMX"; // api key
   const [stocks, setstocks] = useState(null); // stock data
 
   async function fetchData() {
@@ -19,7 +17,7 @@ function MarketContext() {
       `https://www.alphavantage.co/query?function=${stockfunc}&symbol=${search}&outputsize=compact&apikey=K19780Y8NDDIIFMX`
     ); // response from api
     const data = await response.json(); //converting it to json format
-    console.log(data);
+    
     setstocks(data); //setting the stock data after succesfull response
     setcnt(cnt + 1);
   }
@@ -33,7 +31,7 @@ function MarketContext() {
     const searchrecieved = {
       search,
     };
-    console.log(searchrecieved);
+    
   };
 
   return (

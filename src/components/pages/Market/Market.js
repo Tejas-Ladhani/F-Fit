@@ -1,12 +1,11 @@
-import {LineChart2} from '../../Helper';
+import { LineChart2 } from '../../Helper';
 import './Market.css';
 function Market(props) {
 
   let stockopenvalue = [];
   let stockdate = [];
-  if (props.toggle != false && props.cnt > 1) {
-    console.log(props.apiterm);
-    var stockmetadata = props.stocks['Meta Data']['2. Symbol'];
+  if (props.toggle !== false && props.cnt > 1) {
+
     const stockdata = props.stocks[props.apiterm];
     for (var key in stockdata) {
       stockdate.push(key);
@@ -14,11 +13,6 @@ function Market(props) {
     }
 
 
-    console.log(props.stocks);
-    console.log(stockmetadata);
-    console.log(stockdata);
-
-    console.log(stockopenvalue);
 
   }
   return (

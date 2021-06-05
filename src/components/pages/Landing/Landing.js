@@ -4,7 +4,7 @@ import {Balance} from '../../pages';
 import { useContext } from 'react';
 
 function Landing() {
-  const [user, setUser] = useContext(UserContext);
+  const [user, ] = useContext(UserContext);
   return (
 
     <div>
