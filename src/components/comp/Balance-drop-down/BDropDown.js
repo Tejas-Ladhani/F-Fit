@@ -18,12 +18,12 @@ function BDropDown() {
       sav = balance * 0.3;
       emer = balance * 0.2;
 
-    } else if (ratio = '40:40:20') {
+    } else if (ratio === '40:40:20') {
       exp = balance * 0.4;
       sav = balance * 0.4;
       emer = balance * 0.2;
     }
-    else if (ratio = '35:35:30') {
+    else if (ratio === '35:35:30') {
       exp = balance * 0.35;
       sav = balance * 0.35;
       emer = balance * 0.30;

@@ -1,5 +1,5 @@
 import { Main } from '../../comp'
 
-const Home = () => <Main />
+const Home = () => <div className="container-fluid"><Main /></div>
 
 export default Home

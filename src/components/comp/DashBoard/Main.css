@@ -209,3 +209,55 @@
   
 }
 
+/*  */
+.Main__CardTop__container{
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: space-around;
+}
+.Main__Top__card{
+  margin:12px 6px;
+}
+.card_content{
+  display: flex;
+  justify-content: space-between;
+  border: rgb(129, 129, 129) 1px solid;
+  padding: 8px;
+  border-radius: 3px;
+  background: #ffffff;
+  box-shadow: 5px 5px 13px #ededed, -5px -5px 13px #ffffff;
+}
+.Main__Top_Right_Chart, .Main__Bottom__leftCard, .Main__Bottom__rightCard{
+  border: rgb(129, 129, 129) 1px solid;
+  padding: 12px;
+  border-radius: 3px;
+  background: #ffffff;
+  box-shadow: 5px 5px 13px #ededed, -5px -5px 13px #ffffff;
+}
+.Main__Upper_expected_amount_cards{
+  display: flex;
+  justify-content: space-between;
+}
+.bottom_card_content{
+  border: 2px solid;
+  padding: 8px;
+  width: 30rem;
+  border-radius: 3px;
+  background: #ffffff;
+  box-shadow: 5px 5px 13px #ededed, -5px -5px 13px #ffffff;
+  text-align: center;
+  margin: 0px 5px;
+  font-weight: 700;
+  
+}
+.sav{
+    border-color: rgba(37, 90, 2, 0.973);
+}
+.emer{
+    border-color: rgb(0, 225, 255,0.35);
+}
+.exp{
+    border-color: rgba(245, 0, 0, 0.35);
+}
+

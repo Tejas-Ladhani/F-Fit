@@ -92,21 +92,21 @@ function Main() {
   var cards_at_top_data = [
     { title: 'Saving Fund', qnty: nosav, faicon: 'fa fa-credit-card fa-2x text-green' },
     { title: 'Emergency Funds', qnty: noemer, faicon: 'fa fa-line-chart fa-2x text-yellow' },
-    { title: 'No of Expenses', qnty: noexp, faicon: 'fa fa-credit-card-alt fa-2x text-red' },
+    { title: 'No of Expenses', qnty: noexp, faicon: 'fa fa-credit-card-alt fa-2x text-red' }
   ];
 
 
   var cards_at_top = cards_at_top_data.map((value) => {
     return (
-      <div className="card">
+      <div className="Main__Top__card">
 
-        <div className="card_inner">
-          <i
+        <div className="card_content">
+          <div><i
             className={value.faicon}
             aria-hidden="true"
-          ></i>
-          <p className="text-primary-p">Number of {value.title}</p>
-          <span className="font-bold text-title">{value.qnty}</span>
+          ></i></div>
+          <div><p className="text-primary-p">Number of {value.title}</p></div>
+          <div><span className="font-bold text-title">{value.qnty}</span></div>
         </div>
       </div>
     )
@@ -117,58 +117,34 @@ function Main() {
 
 
   return (
-    <main className="dashboard">
-      <div className="main__container">
+    <>
+      <div className="row">
+        <div className="col-md-5 col-sm-12 Main__CardTop__container">
+          <div>{cards_at_top}</div>
+          <div>
+            <p style={{ textAlign: 'center' }}>Expected Values</p>
+            <div className="Main__Upper_expected_amount_cards">
+              <div className="bottom_card_content exp">- {e[1]}</div>
+              <div className="bottom_card_content sav">+ {e[2]}</div>
+              <div className="bottom_card_content emer">++ {e[3]}</div>
 
-        {/* <!-- MAIN CARDS STARTS HERE --> */}
-        <div className="main__cards">
-          {cards_at_top}
-        </div>
-        {/* <!-- MAIN CARDS ENDS HERE --> */}
-
-
-        {/* <!-- CHARTS STARTS HERE --> */}
-        <div className="charts">
-          <div className="charts__left">
-            <div className="charts__left__title">
-              <div>
-                <h1>Your Porfolio Breakup</h1>
-                {/* <p>lorem writing something here</p> */}
-              </div>
-              <i className="fa fa-inr" aria-hidden="true"></i>
-            </div>
-            <PiChart array1={e} />
-          </div>
-
-          <div className="charts__right">
-            <div className="charts__right__title">
-              <div>
-                <h1>Stats Reports</h1>
-                {/* <p>write something here</p> */}
-              </div>
-              <i className="fa fa-inr" aria-hidden="true"></i>
-            </div>
-
-            <div className="charts__right__cards">
-              {cards}
             </div>
           </div>
         </div>
-        {/* <!-- CHARTS ENDS HERE --> */}
-
-        <div className="bottom_container" >
-          <div className="charts_bottom">
-            {/* <PolarChart />
-             */}
-            <LineChart amount={amount} date={date} />
-          </div>
-          <div className="charts_bottom">
-            <BarChart expense={expamount} Date={expdate} />
-          </div>
+        <div className="col-md-6 col-sm-12 mt-3 ml-md-5 Main__Top_Right_Chart">
+          <PiChart array1={[nosav, noemer, noexp]} />
+        </div>
+      </div>
+      <div className="row mt-md-3">
+        <div className="col-md-5 ml-md-2 mb-md-2 Main__Bottom__leftCard">
+          <LineChart amount={amount} date={date} />
+        </div>
+        <div className="col-md-6 ml-md-5 mb-md-2 Main__Bottom__rightCard">
+          <BarChart expense={expamount} Date={expdate} />
         </div>
       </div>
 
-    </main >
+    </>
   );
 };
 

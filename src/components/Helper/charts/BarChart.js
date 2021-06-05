@@ -21,12 +21,20 @@ function BarChart(props) {
                             }
                         ]
                     }}
-                // height={400}
+                height={'100rem'}
                 // width={'40vw'}
-
-                options={{
-                    maintainAspectRatio: false,
-                }}
+                   
+                options = {{
+                    scales: {
+                      yAxes: [
+                        {
+                          ticks: {
+                            beginAtZero: true,
+                          },
+                        },
+                      ],
+                    },
+                  }}
 
 
             ></Bar>
