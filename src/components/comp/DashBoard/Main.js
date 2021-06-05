@@ -9,9 +9,7 @@ import "./Main.css";
 import { useEffect, useState, useContext } from 'react';
 import { db } from '../../../Firebase';
 import { UserContext } from '../../contexts/user';
-import BarChart from "../charts/BarChart";
-import PiChart from "../charts/PiChart";
-import LineChart from "../charts/LineChart";
+import { LineChart, PiChart, BarChart } from "../../Helper";
 
 function Main() {
 
@@ -169,7 +167,7 @@ function Main() {
           </div>
         </div>
       </div>
-            
+
     </main >
   );
 };

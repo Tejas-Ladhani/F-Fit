@@ -15,8 +15,8 @@ function ABanner() {
 
             {/* <!-- Text --> */}
             <p className="font-size-lg text-muted mb-6">
-              
-                </p>
+
+            </p>
 
             {/* <!-- List --> */}
             <div className="d-flex">

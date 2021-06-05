@@ -1,5 +1,4 @@
-import React from 'react'
-import SavingsTable from '../../comp/savings/SavingsTable'
+import {SavingsTable} from '../../comp'
 
 export default function Savings() {
     return (

@@ -1,5 +1,5 @@
 import "./BDropDown.css";
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { Form, InputGroup, Button } from "react-bootstrap";
 import { db } from '../../../Firebase'
 import { UserContext } from '../../contexts/user'
@@ -9,7 +9,7 @@ function BDropDown() {
   const [user, setUser] = useContext(UserContext);
   const [balance, setbalance] = useState(0);
   const [ratio, setratio] = useState('50:30:20');
-  var exp,sav,emer;
+  var exp, sav, emer;
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(ratio);
@@ -17,15 +17,13 @@ function BDropDown() {
       exp = balance * 0.5;
       sav = balance * 0.3;
       emer = balance * 0.2;
- 
-    }else if(ratio='40:40:20')
-    {
+
+    } else if (ratio = '40:40:20') {
       exp = balance * 0.4;
       sav = balance * 0.4;
       emer = balance * 0.2;
     }
-    else if(ratio='35:35:30')
-    {
+    else if (ratio = '35:35:30') {
       exp = balance * 0.35;
       sav = balance * 0.35;
       emer = balance * 0.30;
@@ -37,7 +35,7 @@ function BDropDown() {
       exp: exp,
       sav: sav,
       emer: emer,
- 
+
     }).then(() => alert("your data saved !")
     )
 
@@ -48,7 +46,7 @@ function BDropDown() {
       <Form onSubmit={onSubmit}>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Balance</Form.Label>
-          <Form.Control type="number" placeholder="Enter balance" required  onChange={(e) => { setbalance(e.target.value);  }} />
+          <Form.Control type="number" placeholder="Enter balance" required onChange={(e) => { setbalance(e.target.value); }} />
           <Form.Text className="text-muted">
             We'll never share your details with anyone else.
     </Form.Text>

@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { UserContext } from '../../contexts/user'
 import { Form, Button, Table } from "react-bootstrap";
 import { db } from '../../../Firebase'
@@ -15,8 +15,8 @@ function EApp() {
     const [user, setUser] = useContext(UserContext);
     const [amountInput, setamountInput] = useState(0);
     const [titleInput, settitleInput] = useState('');
-    const[remain,setremain] = useState(0);  
-    var total = 0, exp,count=0;
+    const [remain, setremain] = useState(0);
+    var total = 0, exp, count = 0;
 
 
     var isValid = false;
@@ -31,11 +31,11 @@ function EApp() {
 
     function getDecidedExpense() {
         db.collection("user").doc(user.uid).get().then(doc => {
-            if(doc.data().containsKey('exp'))
-                setReqexpense(doc.data().exp);    
+            if (doc.data().containsKey('exp'))
+                setReqexpense(doc.data().exp);
 
             // console.log(doc.data().exp);
-        }).catch((err)=>{console.log(err)})
+        }).catch((err) => { console.log(err) })
     }
 
     function getExpense() {
@@ -53,7 +53,7 @@ function EApp() {
                         date: (doc.data().date !== null) ? doc.data().date.toDate().toString() : '',
                         title: doc.data().title,
                         amount: doc.data().amount,
-                        
+
                     }))
             );
         }, (err) => { console.log("error occured") });
@@ -69,7 +69,7 @@ function EApp() {
 
         })
         // now we must clear the field after pressing enter
-        setremain(Reqexpense-amountInput);
+        setremain(Reqexpense - amountInput);
         setamountInput('')
         settitleInput('')
     }
@@ -102,7 +102,7 @@ function EApp() {
 
 
                 <div className="col-md-4 col1">
-                    
+
                     <div>Total Expenditure Balance  : {Reqexpense} </div>
                     {/* <div>Remaining Expenditure Balance  : {remain} </div> */}
                     <Form className="pt-4" onSubmit={addExpense}>
@@ -147,7 +147,7 @@ function EApp() {
                                             date={t.date}
                                             amount={t.amount}
                                             id={t.id}
-                                            remain = {t.remain}
+                                            remain={t.remain}
                                         />
 
                                     )

@@ -1,11 +1,5 @@
-import React from 'react'
-import EApp from '../../comp/Expense/EApp'
+import {EApp} from '../../comp'
 
 export default function Expenses() {
-    return (
-        <>
-            {/* <Eindex/> */}
-            <EApp/>
-        </>
-    )
+    return  <EApp/>
 }

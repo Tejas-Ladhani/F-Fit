@@ -1,21 +1,11 @@
 import { useContext } from 'react';
-import { Navbar, NavDropdown, Nav, Button } from 'react-bootstrap';
+import { Navbar, NavDropdown, Nav} from 'react-bootstrap';
 import './NavBar.css';
 import { UserContext } from '../../contexts/user';
 import * as Routes from '../../routes/Routes';
-import SignInBtn from '../signin-btn/SignInBtn';
-import LogOutBtn from '../signin-btn/LogOutBtn';
-import { BrowserRouter as Router, NavLink, Link, Switch, Route } from 'react-router-dom';
-import Balance from '../../pages/Balance/Balance';
-import Home from '../../pages/Home/Home';
-import Expenses from '../../pages/Expenses/Expenses';
-import Landing from '../../pages/Landing/Landing';
-import News from '../../pages/News/News';
-import NewsContext from '../NewsContext/NewsContext';
-import Savings from '../../pages/Savings/Savings';
-import Emergency from '../../pages/Emergency/Emergency';
-import Help from '../../pages/Help/Help';
-import MarketContext from '../MarketContext/MarketContext'
+import {LogOutBtn,SignInBtn,MarketContext} from '..';
+import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom';
+import {Balance,Home,Expenses,Landing,News,Savings,Emergency,Help} from '../../pages';
 import PrivateRoute from  '../../routes/PrivateRoute';
 
 function NBar() {

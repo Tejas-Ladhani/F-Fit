@@ -1,7 +1,7 @@
-import React, { useState, useEffect, createContext } from "react";
+import { useState, useEffect, createContext } from "react";
 import { Card, Form, Button, Row, Col } from "react-bootstrap";
-import "../../comp/MarketContext/MarketContext.css";
-import Market from "../../pages/Market/Market";
+import "./MarketContext.css";
+import { Market } from "../../pages";
 
 function MarketContext() {
   const [cnt, setcnt] = useState(0);
@@ -65,29 +65,29 @@ function MarketContext() {
 
         <div className="row">
 
-        <Button className='mx-3' variant="primary" type="submit" onClick={() => {
-          setstockfunc("TIME_SERIES_MONTHLY");
-          setapiterm("Monthly Time Series");
-        }}>
-          Monthly
+          <Button className='mx-3' variant="primary" type="submit" onClick={() => {
+            setstockfunc("TIME_SERIES_MONTHLY");
+            setapiterm("Monthly Time Series");
+          }}>
+            Monthly
     </Button>
 
 
-        <Button className='mx-3' variant="primary" type="submit" onClick={() => {
-          setstockfunc("TIME_SERIES_DAILY");
-          setapiterm("Time Series (Daily)");
-        }}>
-          DAILY
+          <Button className='mx-3' variant="primary" type="submit" onClick={() => {
+            setstockfunc("TIME_SERIES_DAILY");
+            setapiterm("Time Series (Daily)");
+          }}>
+            DAILY
     </Button>
 
-</div>
+        </div>
 
       </Form>
 
 
       <div className="row">
         <div className="col-md-12">
-        <Market stocks={stocks} toggle={toggle} cnt={cnt} apiterm={apiterm} />
+          <Market stocks={stocks} toggle={toggle} cnt={cnt} apiterm={apiterm} />
         </div>
       </div>
 

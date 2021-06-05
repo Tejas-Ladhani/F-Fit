@@ -1,8 +1,7 @@
-import React, { useContext, useState, useEffect } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { UserContext } from '../../contexts/user'
 import { Form, Button, Table } from "react-bootstrap";
 import { db } from '../../../Firebase'
-import firebase from 'firebase'
 import EmergencyListItem from './EmergencyListItem';
 // title, amount , type [RD,FD,MUTUAL, OTHERS],COMMENT ,DATE INVESTED ON
 function EmergencyIndex() {

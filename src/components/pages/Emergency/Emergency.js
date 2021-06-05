@@ -1,10 +1,6 @@
-import React from 'react'
-import EmergencyIndex from '../../comp/Emergency/EmergencyIndex'
+import {EmergencyIndex} from '../../comp'
 
 export default function Emergency() {
-    return (
-        <>
-           <EmergencyIndex/>
-        </>
-    )
+    return  <EmergencyIndex/>
+       
 }

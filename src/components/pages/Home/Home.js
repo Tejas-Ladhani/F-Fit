@@ -1,12 +1,5 @@
-import React from 'react'
-import Main from '../../comp/DashBoard/Main'
+import { Main } from '../../comp'
 
-const Home = () => {
-    return (
-        
-       <Main/>
-    
-    )
-}
+const Home = () => <Main />
 
 export default Home

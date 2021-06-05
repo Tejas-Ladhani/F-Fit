@@ -2,7 +2,7 @@ import firebase from "firebase"
 import "firebase/auth"
 
 const firebaseConfig = {
-    
+     
   };
 
 const firebaseApp = firebase.initializeApp(firebaseConfig)
