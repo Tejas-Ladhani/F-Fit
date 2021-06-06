@@ -7,3 +7,4 @@ export const Savings = {name:"Savings",link:"/savings"}
 export const Expense = {name :"Expenses",link: "/expense"};
 export const Help = {name :"Help",link: "/help"};
 export const Market = {name :"Market",link: "/market"};
+export const NotFound = {name :"NotFound",link: "/404"};

@@ -1,12 +1,13 @@
 import { useContext } from 'react';
-import { Navbar, NavDropdown, Nav} from 'react-bootstrap';
+import { Navbar, NavDropdown, Nav, Popover,OverlayTrigger} from 'react-bootstrap';
 import './NavBar.css';
 import { UserContext } from '../../contexts/user';
 import * as Routes from '../../routes/Routes';
 import {LogOutBtn,SignInBtn,MarketContext} from '..';
-import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Link, Switch, Route,Redirect } from 'react-router-dom';
 import {Balance,Home,Expenses,Landing,News,Savings,Emergency,Help} from '../../pages';
 import PrivateRoute from  '../../routes/PrivateRoute';
+import NotFound from '../../pages/Not-found/NotFound';
 
 function NBar() {
   const [user, /*setUser*/] = useContext(UserContext);
@@ -32,9 +33,24 @@ function NBar() {
 
             {user ?<Link href={Routes.Help.link}>Help</Link>:<Link/>}
           </Nav>
-          {user ?<img src={user.photoURL} style={{ height: '35px', borderRadius: '17px' ,marginBottom:'12px',marginRight:'10px'}} alt="User profile"/> :<div></div> }
+          {user ?
+            <OverlayTrigger
+      trigger="click"
+      placement="bottom"
+      overlay={
+        <Popover>
+          <Popover.Content>
+          <LogOutBtn/>
+          </Popover.Content>
+        </Popover>
+      }
+    >
+      <img src={user.photoURL} style={{ height: '35px', borderRadius: '17px' ,marginBottom:'12px',marginRight:'10px',cursor:'pointer'}} alt="User profile"/>
+    </OverlayTrigger>
+
+         :<SignInBtn />}
           
-          {user ? <LogOutBtn/> : <SignInBtn />}
+          {/* {user ? <LogOutBtn/> : <SignInBtn />} */}
           
         </Navbar.Collapse>
       </Navbar>
@@ -43,16 +59,15 @@ function NBar() {
         <PrivateRoute path="/balance" exact component={Balance} />
         <PrivateRoute path="/home" exact component={Home} />
         <PrivateRoute path="/expense" exact component={Expenses} />
-        <PrivateRoute path="/news" >
-          <News />
-          {/* < /> */}
-        </PrivateRoute>
+        <PrivateRoute path="/news" exact component={News} />
+        <PrivateRoute path="/404" component={NotFound}/>
         <PrivateRoute path="/savings" exact component={Savings} />
         <PrivateRoute path="/emergency" exact component={Emergency} />
         <PrivateRoute path="/market" exact component={MarketContext}/>
-
+        <Redirect to="/404" />
         <PrivateRoute path="/help" exact component={Help} />
         <PrivateRoute path="/signup" />
+        <Redirect to="/404" />
       </Switch>
     </Router>
   );

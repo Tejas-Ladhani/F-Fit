@@ -1,0 +1,11 @@
+.NotFound{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
+}
+.NotFound__404>h1{
+    letter-spacing: 2px;
+    font-size: 100px;
+}

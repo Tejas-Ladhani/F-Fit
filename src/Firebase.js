@@ -4,7 +4,7 @@ import 'firebase/auth'
 import 'firebase/storage'
 
 const firebaseConfig = {
-     
+    
   };
   var firebaseApp;
   if (!firebase.apps.length) {
