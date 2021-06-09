@@ -22,9 +22,9 @@ function NBar() {
             {user ? <Link to={Routes.Balance.link}>Balance</Link>:<Link />}
             {user ?<NavDropdown title="Break" id="basic-nav-dropdown">
 
-              <NavDropdown.Item><Link to={Routes.Savings.link}>Savings</Link></NavDropdown.Item>
-              <NavDropdown.Item ><Link to={Routes.Expense.link}>Expense</Link></NavDropdown.Item>
-              <NavDropdown.Item><Link to={Routes.Emergency.link}>Emergency</Link></NavDropdown.Item>
+              <NavDropdown.Item as={Link} to={Routes.Savings.link}>Savings</NavDropdown.Item>
+              <NavDropdown.Item  as={Link} to={Routes.Expense.link}>Expense</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to={Routes.Emergency.link}>Emergency</NavDropdown.Item>
             </NavDropdown>:<Link />}
 
             {user ?<Link to={Routes.News.link}>News</Link>:<Link/>}
